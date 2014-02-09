@@ -1,0 +1,12 @@
+#N canvas 638 539 204 215 10;
+#X obj 9 35 packOSC;
+#X obj 9 14 inlet;
+#X obj 9 139 outlet;
+#X text 36 157 Author: Roman Haefeli;
+#X obj 135 139 outlet;
+#X text 36 173 version: 2011-02-01;
+#X obj 9 80 slipenc 65536;
+#X connect 0 0 6 0;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 6 0 2 0;
