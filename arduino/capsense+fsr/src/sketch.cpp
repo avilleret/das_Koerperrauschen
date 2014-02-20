@@ -88,11 +88,23 @@ void save(){ // save all parameters to EEPROM
 void FSRcontrol(OSCMessage &msg, int addrOffset)
 {
   if (msg.fullMatch("/on",addrOffset)) {
-    if (msg.isInt(0))
-    {
-      fsr_on = msg.getInt(0) > 0;
+    if (msg.size() == 1){
+      if (msg.isInt(0))
+      {
+        fsr_on = msg.getInt(0) > 0;
+        snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr/on");
+        bundleOUT.add(path).add(fsr_on);
+      } 
+    } else if (msg.size()>1){
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr/on");
-      bundleOUT.add(path).add(fsr_on);
+      OSCMessage msgOUT(path);
+      for (i=0;i<msg.size() && i<CS_COUNT;i++){
+        fsr_enable[i] = msg.getInt(i) > 0;
+        msgOUT.add(fsr_enable[i]);
+      }
+      msgOUT.send(SLIPSerial);
+      SLIPSerial.endPacket();
+      msgOUT.empty();
     }
   } else if (msg.fullMatch("/on",addrOffset)) {
     for ( int i = 0; i<msg.size() && i<FSR_COUNT; i++){
@@ -114,9 +126,15 @@ void CScontrol(OSCMessage &msg, int addrOffset)
         bundleOUT.add(path).add(cs_on);
       }
     } else if (msg.size()>1){
+      snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/on");
+      OSCMessage msgOUT(path);
       for (i=0;i<msg.size() && i<CS_COUNT;i++){
         cs_enable[i] = msg.getInt(i) > 0;
+        msgOUT.add(cs_enable[i]);
       }
+      msgOUT.send(SLIPSerial);
+      SLIPSerial.endPacket();
+      msgOUT.empty();
     }
   } else if ( msg.fullMatch("/sensibility", addrOffset) ) {
     if (msg.isInt(0))
@@ -183,12 +201,11 @@ void setup()
   }
   for ( i=0; i<CS_COUNT ; i++)
   {
-    cs_enable[i]=false;
+    cs_enable[i]=true;
     //~cs[i].set_CS_AutocaL_Millis(0xFFFFFFFF); // turn off autocalibration
     cs[i].set_CS_AutocaL_Millis(30000);
     cs[i].set_CS_Timeout_Millis(200);
   }
-  cs_enable[8]=true;
 
   Serial.begin(115200);
   while(!Serial)
@@ -209,11 +226,13 @@ void receiveOSC(){
       }
     }
     
-    
     if(!bundleIN.hasError()) {
-      bundleIN.route("/fsr", FSRcontrol);
-      bundleIN.route("/cs", CScontrol);
-      bundleIN.route("/s", SystemControl);
+      snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr");
+      bundleIN.route(path, FSRcontrol);
+      snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs");
+      bundleIN.route(path, CScontrol);
+      snprintf(path+offset,MAX_STRING_LENGTH-offset,"/s");
+      bundleIN.route(path, SystemControl);
     }
   }
     
@@ -229,13 +248,16 @@ void loop()
   bundleOUT.add(path).add(end_scan - start_scan);
   start_scan = millis();
   if ( cs_on ){
-    //~i=cs_id;
-    i=8;
-    if ( cs_enable[i] ){
-      rawcount = cs[i].capacitiveSensor(cs_sensibility);
-      normcount = rawcount / cs_sensibility;
-      snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/%d",i);
-      bundleOUT.add(path).add(normcount);
+    int j = CS_COUNT;
+    while ( cs_enable[cs_id]==0 && j-- ) {
+      cs_id++;
+      cs_id%=CS_COUNT;      
+    }
+    if ( cs_enable[cs_id] ){
+        rawcount = cs[cs_id].capacitiveSensor(cs_sensibility);
+        normcount = rawcount / cs_sensibility;
+        snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/%d",cs_id);
+        bundleOUT.add(path).add(normcount);
     }
     cs_id++;
     cs_id%=CS_COUNT;
