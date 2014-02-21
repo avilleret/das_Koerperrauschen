@@ -282,6 +282,10 @@ void receiveOSC(){
 
 void loop()
 {
+  if ( !Serial ){
+    setup(); // if board is disconnected, "restart the sketch"
+  }
+  
   receiveOSC();
 
   end_scan = millis();
