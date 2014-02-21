@@ -161,7 +161,7 @@ void CScontrol(OSCMessage &msg, int addrOffset)
       }
     }
   } else if ( msg.fullMatch("/timeout", addrOffset) ) {
-    if (msg.size()){
+    if (msg.size() == 0){
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/timeout");
       bundleOUT.add(path).add((int)boardParam.cs_timeout);
     } else if (msg.isInt(0)) {
