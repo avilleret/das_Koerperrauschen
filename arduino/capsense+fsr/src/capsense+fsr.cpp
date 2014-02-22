@@ -143,13 +143,15 @@ void CScontrol(OSCMessage &msg, int addrOffset)
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/sensibility");
       bundleOUT.add(path).add( (int) boardParam.cs_sensibility);
     } else if (msg.isInt(0)) {
-      boardParam.cs_sensibility = msg.getInt(0);
+      boardParam.cs_sensibility = msg.getInt(0) > 0 ? msg.getInt(0) : 1;
     }
+  /* desactivate /reset message, no more needed without CS_AutoCal
   } else if ( msg.fullMatch("/reset", addrOffset) ) {
     for ( i=0; i<CS_COUNT ; i++)
     {
       cs[i].reset_CS_AutoCal(); // reset all sensors
     }
+  */
   /* desactivate autocalibration  
   } else if ( msg.fullMatch("/autocal", addrOffset) ) {
     if (msg.size() == 0){
@@ -169,7 +171,7 @@ void CScontrol(OSCMessage &msg, int addrOffset)
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/timeout");
       bundleOUT.add(path).add((int)boardParam.cs_timeout);
     } else if (msg.isInt(0)) {
-      boardParam.cs_timeout=msg.getInt(0);
+      boardParam.cs_timeout=msg.getInt(0) > 0 ? msg.getInt(0) : 1;
       for ( i=0; i<CS_COUNT ; i++)
       {
         cs[i].set_CS_Timeout_Millis(boardParam.cs_timeout);
@@ -287,22 +289,26 @@ void receiveOSC(){
 void scanCS()
 {
   if ( boardParam.cs_on ){
-    int j = CS_COUNT;
-    while ( boardParam.cs_enable[cs_id]==0 && j-- ) {
-      cs_id++;
-      cs_id%=CS_COUNT;      
+    for ( cs_id=0 ; cs_id < CS_COUNT; cs_id++ ){
+      int j = CS_COUNT;
+      while ( boardParam.cs_enable[cs_id]==0 && j-- ) {
+        cs_id++;
+        cs_id%=CS_COUNT;      
+      }
+      if ( boardParam.cs_enable[cs_id] ){
+          //~rawcount = cs[cs_id].capacitiveSensor(boardParam.cs_sensibility);
+          rawcount = cs[cs_id].capacitiveSensorRaw(boardParam.cs_sensibility);
+          if (rawcount != -2){ // if sensor is timeout, resend last value
+            cs_norm[cs_id] = (float) rawcount / (float) boardParam.cs_sensibility;
+          }
+          //~snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/%d",cs_id);
+          //~bundleOUT.add(path).add(cs_norm[cs_id]);
+      }
+      //~cs_id++;
+      //~cs_id%=CS_COUNT;
     }
-    if ( boardParam.cs_enable[cs_id] ){
-        //~rawcount = cs[cs_id].capacitiveSensor(boardParam.cs_sensibility);
-        rawcount = cs[cs_id].capacitiveSensorRaw(boardParam.cs_sensibility);
-        if (rawcount != -2){
-          cs_norm[cs_id] = (float) rawcount / (float) boardParam.cs_sensibility;
-          snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/%d",cs_id);
-          bundleOUT.add(path).add(cs_norm[cs_id]);
-        }
-    }
-    cs_id++;
-    cs_id%=CS_COUNT;
+    snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs");
+    bundleOUT.add(path).add(cs_norm[0]).add(cs_norm[1]).add(cs_norm[2]).add(cs_norm[3]).add(cs_norm[4]).add(cs_norm[5]).add(cs_norm[6]).add(cs_norm[7]).add(cs_norm[8]);
   }
 }
 
@@ -348,15 +354,15 @@ void loop()
   
   receiveOSC();
 
+  scanCS();
+  scanFSR();
+
+  // compute and send scan loop duration over OSC
   end_scan = millis();
-  // compute and send scan time over OSC
   snprintf(path+offset,MAX_STRING_LENGTH-offset,"/s/t");
   bundleOUT.add(path).add(end_scan - start_scan);
   start_scan = millis();
-  
-  scanCS();
-  scanFSR();
-  
+    
   bundleOUT.send(SLIPSerial);
   SLIPSerial.endPacket();
   bundleOUT.empty();
