@@ -1,4 +1,4 @@
-#N canvas 1002 123 696 956 10;
+#N canvas 996 123 696 956 10;
 #X obj 64 64 list;
 #X obj 64 176 list split 1;
 #X obj 64 198 t b a;
@@ -62,7 +62,7 @@
 #X floatatom 377 -123 5 0 0 0 - - -, f 5;
 #X obj 405 -149 % 1000;
 #X msg 384 24 set \$1 \$2 \$3;
-#X msg 384 46 0.799973 1 0;
+#X msg 384 46 1 0 0;
 #X floatatom 416 -122 5 0 0 0 - - -, f 5;
 #X obj 405 -97 * 0.2;
 #X floatatom 405 -53 5 0 0 0 - - -, f 5;
@@ -78,12 +78,12 @@
 #X msg 173 -8 resize \$1;
 #X obj 64 -77 route float color size on;
 #X obj 300 221 scaleXYZ 32 8 1;
-#X obj 300 121 translateXYZ -16 -4 0;
 #X obj 300 -111 gemhead -50;
 #X obj 64 -5 / 1;
 #X obj 590 -366 inlet;
 #X obj 326 -133 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
+#X obj 300 121 translateXYZ -16 -4 0;
 #X connect 0 0 7 0;
 #X connect 0 0 9 0;
 #X connect 1 0 2 0;
@@ -102,7 +102,7 @@
 #X connect 9 0 0 1;
 #X connect 9 2 0 1;
 #X connect 13 0 76 0;
-#X connect 14 0 78 0;
+#X connect 14 0 82 0;
 #X connect 15 0 73 0;
 #X connect 16 0 14 1;
 #X connect 16 0 61 0;
@@ -112,7 +112,7 @@
 #X connect 20 0 77 2;
 #X connect 21 0 23 0;
 #X connect 22 0 52 0;
-#X connect 23 0 78 2;
+#X connect 23 0 82 2;
 #X connect 24 0 26 0;
 #X connect 24 1 25 0;
 #X connect 25 0 27 0;
@@ -124,8 +124,8 @@
 #X connect 30 0 31 0;
 #X connect 30 1 29 1;
 #X connect 31 0 29 0;
-#X connect 33 0 79 0;
-#X connect 33 0 82 0;
+#X connect 33 0 78 0;
+#X connect 33 0 81 0;
 #X connect 34 0 35 0;
 #X connect 35 0 45 0;
 #X connect 36 0 37 0;
@@ -166,13 +166,13 @@
 #X connect 73 0 51 0;
 #X connect 74 0 67 0;
 #X connect 75 0 68 0;
-#X connect 76 0 80 0;
+#X connect 76 0 79 0;
 #X connect 76 1 14 1;
 #X connect 76 2 74 0;
 #X connect 76 2 75 0;
-#X connect 76 3 79 0;
+#X connect 76 3 78 0;
 #X connect 77 0 55 0;
-#X connect 78 0 77 0;
-#X connect 79 0 14 0;
-#X connect 80 0 0 0;
-#X connect 81 0 24 0;
+#X connect 78 0 14 0;
+#X connect 79 0 0 0;
+#X connect 80 0 24 0;
+#X connect 82 0 77 0;

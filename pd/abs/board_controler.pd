@@ -1,4 +1,4 @@
-#N canvas 1036 176 674 536 10;
+#N canvas 1230 141 674 536 10;
 #X declare -path ../bin;
 #X obj 229 358 s to-all-arduino;
 #X obj 229 332 packOSCstream;
@@ -8,7 +8,7 @@
 #X msg 195 226 ];
 #X obj 195 202 t b a b;
 #X obj 123 104 tgl 15 0 empty \$0-fsr_on-in empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X msg 123 124 /fsr/on \$1;
 #X msg 195 124 /cs/on \$1;
 #X floatatom 260 87 5 0 0 0 - #0-cs_sensibility-in -, f 5;
@@ -26,21 +26,21 @@
 #X obj 475 103 speedlim 200;
 #X msg 475 123 /cs/timeout \$1;
 #X obj 339 40 tgl 15 0 empty \$0-cs_0-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 354 40 tgl 15 0 empty \$0-cs_1-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 369 40 tgl 15 0 empty \$0-cs_2-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 384 40 tgl 15 0 empty \$0-cs_3-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 399 40 tgl 15 0 empty \$0-cs_4-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 414 40 tgl 15 0 empty \$0-cs_5-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 429 40 tgl 15 0 empty \$0-cs_6-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 444 40 tgl 15 0 empty \$0-cs_7-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 459 40 tgl 15 0 empty \$0-cs_8-in empty 17 7 0 10 -262144 -1
 -1 1 1;
 #N canvas 1 115 537 300 cs_enable 0;
@@ -105,7 +105,7 @@
 #X connect 25 0 24 1;
 #X restore 339 59 pd cs_enable;
 #X obj 84 24 declare -path ../bin;
-#N canvas 1 100 450 481 prepend 0;
+#N canvas 1 105 450 481 prepend 0;
 #X obj 176 73 inlet;
 #X obj 176 197 makefilename;
 #X obj 191 130 loadbang;
@@ -131,7 +131,7 @@
 #X obj 364 328 print /b0\$1;
 #X obj 397 285 tgl 15 0 empty empty monitor 17 7 0 10 -262144 -1 -1
 0 1;
-#X obj 193 438 cnv 15 140 50 empty \$0-boardName /b04 10 24 0 48 -233017
+#X obj 193 438 cnv 15 140 50 empty \$0-boardName /b00 10 24 0 48 -233017
 -66577 0;
 #X obj 384 420 loadbang;
 #X obj 384 486 s \$0-boardName;
@@ -140,23 +140,23 @@
 #X obj 384 442 \$1;
 #X msg 384 464 label /b0\$1;
 #X obj 57 52 tgl 15 0 empty \$0-fsr_0-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 72 52 tgl 15 0 empty \$0-fsr_1-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 87 52 tgl 15 0 empty \$0-fsr_2-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 102 52 tgl 15 0 empty \$0-fsr_3-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 117 52 tgl 15 0 empty \$0-fsr_4-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 132 52 tgl 15 0 empty \$0-fsr_5-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 147 52 tgl 15 0 empty \$0-fsr_6-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 162 52 tgl 15 0 empty \$0-fsr_7-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #X obj 177 52 tgl 15 0 empty \$0-fsr_8-in empty 17 7 0 10 -262144 -1
--1 1 1;
+-1 255 255;
 #N canvas 1 160 537 300 fsr_enable 0;
 #X obj 110 103 t b f;
 #X obj 71 65 inlet;
@@ -219,8 +219,8 @@
 #X connect 25 0 20 0;
 #X restore 57 71 pd fsr_enable;
 #X msg 343 180 /s/save;
-#X msg 341 156 /s/load;
-#N canvas 234 477 1445 500 receiveOSC 0;
+#X msg 340 151 /s/load;
+#N canvas 232 482 1445 500 receiveOSC 0;
 #X obj 130 33 loadbang;
 #X obj 130 55 \$1;
 #X msg 130 77 set /b0\$1;
@@ -366,6 +366,11 @@
 -1;
 #X obj 397 155 bng 15 250 50 0 empty \$0-load_in empty 17 7 0 10 -262144
 -1 -1;
+#X msg 411 179 /cs/reset;
+#X msg 379 239 /s/getParams;
+#X obj 518 357 s \$0-cs_timeout-in;
+#X msg 515 329 set \$1;
+#X floatatom 514 311 5 0 0 0 - - -, f 5;
 #X connect 1 0 0 0;
 #X connect 2 0 8 0;
 #X connect 3 0 1 0;
@@ -423,3 +428,7 @@
 #X connect 57 0 32 0;
 #X connect 58 0 53 0;
 #X connect 59 0 55 0;
+#X connect 60 0 5 0;
+#X connect 61 0 5 0;
+#X connect 63 0 62 0;
+#X connect 64 0 63 0;
