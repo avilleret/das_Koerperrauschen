@@ -37,6 +37,7 @@ void SystemControl(OSCMessage &msg, int addrOffset);
 void setup();
 void receiveOSC();
 void loop();
+void getAllParams();
 void saveParam();
 void loadParam();
 
@@ -82,7 +83,8 @@ BoardParam boardParam;
 
 int i=0, cs_id;
 long rawcount=0;
-float normcount=0.;
+float cs_norm[9] ={0.,0.,0.,0.,0.,0.,0.,0.,0.};
+int fsr[9]={0,0,0,0,0,0,0,0,0};
 OSCBundle bundleOUT;
 
 void FSRcontrol(OSCMessage &msg, int addrOffset)
@@ -187,6 +189,8 @@ void SystemControl(OSCMessage &msg, int addrOffset){
     saveParam();
   } else if (msg.fullMatch("/load",addrOffset)){
     loadParam();
+  } else if ( msg.fullMatch("/getParams",addrOffset) ){
+    getAllParams();
   } else {
     snprintf(path+offset,MAX_STRING_LENGTH-offset,"/s/date");
     bundleOUT.add(path).add(__DATE__);
@@ -280,19 +284,8 @@ void receiveOSC(){
     
 }
 
-void loop()
+void scanCS()
 {
-  if ( !Serial ){
-    setup(); // if board is disconnected, "restart the sketch"
-  }
-  
-  receiveOSC();
-
-  end_scan = millis();
-  // compute and send scan time over OSC
-  snprintf(path+offset,MAX_STRING_LENGTH-offset,"/s/t");
-  bundleOUT.add(path).add(end_scan - start_scan);
-  start_scan = millis();
   if ( boardParam.cs_on ){
     int j = CS_COUNT;
     while ( boardParam.cs_enable[cs_id]==0 && j-- ) {
@@ -301,14 +294,20 @@ void loop()
     }
     if ( boardParam.cs_enable[cs_id] ){
         rawcount = cs[cs_id].capacitiveSensor(boardParam.cs_sensibility);
-        normcount = rawcount / boardParam.cs_sensibility;
+        cs_norm[cs_id] = (float) rawcount / (float) boardParam.cs_sensibility;
         snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/%d",cs_id);
-        bundleOUT.add(path).add(normcount);
+        bundleOUT.add(path).add(cs_norm[cs_id]);
     }
     cs_id++;
     cs_id%=CS_COUNT;
   }
+}
 
+void scanFSR()
+{
+  //~snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr");
+  //~OSCMessage msgFSR(path);
+  //~OSCMessage msgFSR("/fsr");
   if ( boardParam.fsr_on ){
     //~ put COMMON_PIN to LOW to use it as a reference for the FSR
     digitalWrite(COMMON_PIN,LOW);  
@@ -317,18 +316,47 @@ void loop()
         // set an internal pull-up resistor on A0 pin
         digitalWrite(fsr_pin[i],HIGH);
         rawcount = analogRead(fsr_pin[i]);
-        normcount = (1023 - rawcount) / 1023.;
-        snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr/%d",i);
-        bundleOUT.add(path).add(normcount);
+        fsr[i] = 1023 - rawcount;
+        //~snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr/%d",i);
+        //~bundleOUT.add(path).add(normcount);
+        //~msgFSR.add(normcount);
         // disable internal pull-up
         digitalWrite(fsr_pin[i],LOW);
       }
     }
+    snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr");
+    bundleOUT.add(path).add(fsr[0]).add(fsr[1]).add(fsr[2]).add(fsr[3]).add(fsr[4]).add(fsr[5]).add(fsr[6]).add(fsr[7]).add(fsr[8]);
   }
+
+  //~bundleOUT.add(msgFSR);
+  //~msgFSR.send(SLIPSerial);
+  //~SLIPSerial.endPacket();
+  //~msgFSR.empty();
+}
+
+void loop()
+{
+  /*
+   * this takes about 10ms to check Serial...
+  if ( !Serial ){
+    setup(); // if board is disconnected, "restart the sketch"
+  }
+  */
+  
+  receiveOSC();
+
+  end_scan = millis();
+  // compute and send scan time over OSC
+  snprintf(path+offset,MAX_STRING_LENGTH-offset,"/s/t");
+  bundleOUT.add(path).add(end_scan - start_scan);
+  start_scan = millis();
+  
+  scanCS();
+  scanFSR();
   
   bundleOUT.send(SLIPSerial);
   SLIPSerial.endPacket();
   bundleOUT.empty();
   
-  delay(boardParam.loopDelay);
+  //~delay(boardParam.loopDelay);
 }
