@@ -74,7 +74,7 @@ typedef struct {
 
   uint16_t cs_sensibility;
   uint16_t cs_timeout;
-  int16_t cs_autocal;
+  unsigned long cs_autocal;
   uint16_t loopDelay;
 } BoardParam;
 /* end of global parameters */
@@ -150,6 +150,7 @@ void CScontrol(OSCMessage &msg, int addrOffset)
     {
       cs[i].reset_CS_AutoCal(); // reset all sensors
     }
+  /* desactivate autocalibration  
   } else if ( msg.fullMatch("/autocal", addrOffset) ) {
     if (msg.size() == 0){
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/autocal");
@@ -157,11 +158,12 @@ void CScontrol(OSCMessage &msg, int addrOffset)
     } else if (msg.isInt(0))
     {
       boardParam.cs_autocal=msg.getInt(0);
-      for ( i=0; i<CS_COUNT ; i++)
+      for ( i=0; i<CS_COUNT ; i++) 
       {
-        cs[i].set_CS_AutocaL_Millis(boardParam.cs_autocal);
+        //~cs[i].set_CS_AutocaL_Millis(boardParam.cs_autocal);
       }
     }
+  */
   } else if ( msg.fullMatch("/timeout", addrOffset) ) {
     if (msg.size() == 0){
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/timeout");
@@ -214,17 +216,11 @@ void getAllParams(){
   OSCMessage get_timeout("/timeout");
   CScontrol(get_timeout,0);
   
-  OSCMessage get_autocal("/autocal");
-  CScontrol(get_autocal,0);
+  //~OSCMessage get_autocal("/autocal");
+  //~CScontrol(get_autocal,0);
   
   OSCMessage get_loopDelay("/del");
   SystemControl(get_loopDelay,0);
-  
-  // some garde fou
-  if ( boardParam.loopDelay > 1000 ) boardParam.loopDelay=0;
-  if ( boardParam.cs_autocal > 30000 ) boardParam.cs_autocal=2000;
-  if ( boardParam.cs_timeout > 2000 ) boardParam.cs_timeout=100;
-  if ( boardParam.cs_sensibility > 2000 ) boardParam.cs_sensibility=30;
 }
  
 void saveParam(){
@@ -233,6 +229,12 @@ void saveParam(){
 
 void loadParam(){
   eeprom_read_block(&boardParam, 0, sizeof(BoardParam)); 
+  
+  // some garde fou
+  if ( boardParam.loopDelay > 1000 ) boardParam.loopDelay=0;
+  if ( boardParam.cs_timeout > 2000 ) boardParam.cs_timeout=100;
+  if ( boardParam.cs_sensibility > 2000 ) boardParam.cs_sensibility=30;
+  
   getAllParams();
 }
 
@@ -250,11 +252,9 @@ void setup()
   for ( i=0; i<CS_COUNT ; i++)
   {
     boardParam.cs_enable[i]=true;
-    //~cs[i].set_CS_AutocaL_Millis(0xFFFFFFFF); // turn off autocalibration
-    //~cs[i].set_CS_AutocaL_Millis(boardParam.cs_autocal);
-    //~cs[i].set_CS_Timeout_Millis(boardParam.cs_timeout);
-    cs[i].set_CS_AutocaL_Millis(2000);
-    cs[i].set_CS_Timeout_Millis(30);
+    boardParam.cs_autocal=0xFFFFFFFF; // switch off autocalibration : used Pd's filter instead
+    cs[i].set_CS_AutocaL_Millis(boardParam.cs_autocal);
+    cs[i].set_CS_Timeout_Millis(boardParam.cs_timeout);
   }
   boardParam.cs_on=true;
   boardParam.fsr_on=false;
@@ -293,10 +293,13 @@ void scanCS()
       cs_id%=CS_COUNT;      
     }
     if ( boardParam.cs_enable[cs_id] ){
-        rawcount = cs[cs_id].capacitiveSensor(boardParam.cs_sensibility);
-        cs_norm[cs_id] = (float) rawcount / (float) boardParam.cs_sensibility;
-        snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/%d",cs_id);
-        bundleOUT.add(path).add(cs_norm[cs_id]);
+        //~rawcount = cs[cs_id].capacitiveSensor(boardParam.cs_sensibility);
+        rawcount = cs[cs_id].capacitiveSensorRaw(boardParam.cs_sensibility);
+        if (rawcount != -2){
+          cs_norm[cs_id] = (float) rawcount / (float) boardParam.cs_sensibility;
+          snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/%d",cs_id);
+          bundleOUT.add(path).add(cs_norm[cs_id]);
+        }
     }
     cs_id++;
     cs_id%=CS_COUNT;
