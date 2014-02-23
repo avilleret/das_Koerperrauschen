@@ -300,6 +300,8 @@ void scanCS()
           rawcount = cs[cs_id].capacitiveSensorRaw(boardParam.cs_sensibility);
           if (rawcount != -2){ // if sensor is timeout, resend last value
             cs_norm[cs_id] = (float) rawcount / (float) boardParam.cs_sensibility;
+          } else {
+            cs_norm[cs_id] = -2;
           }
           //~snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/%d",cs_id);
           //~bundleOUT.add(path).add(cs_norm[cs_id]);
