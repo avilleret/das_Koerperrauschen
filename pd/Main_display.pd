@@ -1,4 +1,4 @@
-#N canvas 612 894 419 141 10;
+#N canvas 163 671 419 141 10;
 #X declare -path ../av;
 #X declare -path ../av;
 #X declare -path ../av;
@@ -224,7 +224,7 @@
 #X restore 170 25 pd tables;
 #X obj 90 26 gemhead;
 #X obj 90 45 world_light;
-#N canvas 1209 235 553 503 receiveOSC 1;
+#N canvas 1064 560 553 503 receiveOSC 0;
 #X obj 39 18 udpreceive 239.200.200 9997;
 #X obj 39 60 unpackOSC;
 #X obj 39 203 routeOSC /cs /fsr;
@@ -593,7 +593,7 @@
 #X connect 22 0 5 0;
 #X connect 23 0 5 0;
 #X restore 30 65 pd receiveOSC;
-#N canvas 149 779 432 293 show_raw_data 0;
+#N canvas 147 784 432 293 show_raw_data 0;
 #X obj 59 -17 r fsr_processed;
 #X obj 107 144 f;
 #X obj 132 144 + 1;
@@ -669,7 +669,7 @@
 #X connect 19 0 20 1;
 #X connect 20 0 2 0;
 #X restore 285 19 pd script;
-#N canvas 79 457 652 232 60displays 0;
+#N canvas 75 467 652 232 60displays 0;
 #X obj 10 10 gem_display 0;
 #X obj 10 30 gem_display 1;
 #X obj 10 50 gem_display 2;
@@ -731,6 +731,8 @@
 #X obj 510 170 gem_display 58;
 #X obj 510 190 gem_display 59;
 #X restore 285 -1 pd 60displays;
+#X obj 329 81 inlet;
+#X obj 329 103 s raw_display;
 #X connect 0 0 6 0;
 #X connect 1 0 2 0;
 #X connect 1 0 9 0;
@@ -763,8 +765,9 @@
 #X connect 21 1 12 0;
 #X connect 22 0 17 0;
 #X connect 23 0 20 0;
+#X connect 26 0 27 0;
 #X restore 30 105 pd show_raw_data;
-#X obj 13 85 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 13 85 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 200 63 vradio 15 1 0 3 colorMode empty empty 0 -8 0 10 -262144
 -1 -1 0;
@@ -776,8 +779,11 @@
 puremapping;
 #X obj 13 65 tgl 15 0 empty empty mute -26 7 0 10 -262144 -1 -1 0 1
 ;
+#X obj 13 105 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X connect 0 0 1 0;
 #X connect 1 0 0 0;
 #X connect 3 0 4 0;
 #X connect 7 0 12 0;
 #X connect 14 0 5 0;
+#X connect 15 0 6 0;

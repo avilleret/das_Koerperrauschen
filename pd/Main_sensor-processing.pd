@@ -1,4 +1,4 @@
-#N canvas 1250 476 423 467 10;
+#N canvas 1244 491 423 467 10;
 #X declare -path ../bin;
 #X declare -path ../bin;
 #X declare -path ../bin;
@@ -26,6 +26,7 @@
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
+#X declare -path ../bin;
 #X declare -path abs -path bin -path av -path puremapping;
 #X declare -path ../bin -path ../puremapping -path ../av;
 #X declare -path ../bin -path ../puremapping -path ../av;
@@ -53,6 +54,7 @@
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
+#X declare -path ../bin;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
@@ -74,6 +76,7 @@
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
+#X declare -path ../bin;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
@@ -95,6 +98,7 @@
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
+#X declare -path ../bin;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
@@ -116,6 +120,7 @@
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
+#X declare -path ../bin;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
@@ -137,6 +142,7 @@
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
 #X declare -path ../puremapping -path ../av;
+#X declare -path ../bin;
 #X floatatom 16 72 5 0 0 1 ms - -, f 5;
 #N canvas 76 636 561 299 comports 0;
 #X obj 285 64 r to-all-arduino;

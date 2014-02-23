@@ -1,4 +1,4 @@
-#N canvas 715 725 578 293 10;
+#N canvas 713 730 578 293 10;
 #X declare -path ../av;
 #X declare -path ../av;
 #X obj 119 -283 declare -path ../av;
@@ -143,7 +143,7 @@
 #X floatatom 313 -518 5 0 0 0 - - -, f 5;
 #X obj 341 -544 % 1000;
 #X msg 362 -164 set \$1 \$2 \$3;
-#X msg 362 -142 1 0 0;
+#X msg 362 -142 0.799995 0 1;
 #X floatatom 352 -517 5 0 0 0 - - -, f 5;
 #X obj 341 -492 * 0.2;
 #X floatatom 341 -448 5 0 0 0 - - -, f 5;
@@ -298,7 +298,7 @@
 #X connect 77 0 27 0;
 #X connect 78 0 8 0;
 #X restore 199 -163 pd displayFSR;
-#N canvas 349 101 627 917 displayCS 1;
+#N canvas 347 106 627 917 displayCS 0;
 #X obj 265 -115 color 1 0 0;
 #X obj 354 219 loadbang;
 #X obj 346 -182 hsv2rgb;
@@ -315,7 +315,7 @@
 #X floatatom 360 -304 5 0 0 0 - - -, f 5;
 #X obj 388 -330 % 1000;
 #X msg 349 -112 set \$1 \$2 \$3;
-#X msg 349 -90 1 0.5 0.5;
+#X msg 349 -90 0.899998 0.5 1;
 #X floatatom 399 -303 5 0 0 0 - - -, f 5;
 #X obj 388 -278 * 0.2;
 #X floatatom 388 -234 5 0 0 0 - - -, f 5;
@@ -327,7 +327,7 @@
 #X msg 354 241 draw linestrip;
 #X obj 265 -227 gemhead -50;
 #X obj 265 -248 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 366 352 _gemvertexbuffer 200;
 #X floatatom 300 12 5 0 0 0 - - -, f 5;
 #X obj 482 -167 r gemwin_dimen;
@@ -504,8 +504,11 @@
 #X obj 285 -213 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 174 -199 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
+#X obj 276 -261 r raw_display;
 #X connect 2 0 4 0;
 #X connect 3 0 5 0;
 #X connect 6 0 4 1;
 #X connect 7 0 5 1;
+#X connect 8 0 6 0;
+#X connect 8 0 7 0;
