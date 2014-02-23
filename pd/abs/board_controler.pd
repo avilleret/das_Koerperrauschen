@@ -1,5 +1,5 @@
-#N canvas 1230 141 674 536 10;
-#X declare -path ../bin;
+#N canvas 1192 236 674 536 10;
+#X declare -path ../bin -path ../puremapping -path ../av;
 #X obj 229 358 s to-all-arduino;
 #X obj 229 332 packOSCstream;
 #X obj 195 103 tgl 15 0 empty \$0-cs_on-in empty 17 7 0 10 -262144
@@ -8,39 +8,39 @@
 #X msg 195 226 ];
 #X obj 195 202 t b a b;
 #X obj 123 104 tgl 15 0 empty \$0-fsr_on-in empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X msg 123 124 /fsr/on \$1;
 #X msg 195 124 /cs/on \$1;
 #X floatatom 260 87 5 0 0 0 - #0-cs_sensibility-in -, f 5;
 #X msg 260 124 /cs/sensibility \$1;
 #X msg 501 199 /s/del \$1;
 #X floatatom 501 162 5 0 0 0 - #0-del-in -, f 5;
-#X obj 501 179 speedlim 200;
-#X obj 260 104 speedlim 200;
-#X floatatom 378 87 5 0 0 0 - #0-cs_autocal-in -, f 5;
-#X obj 378 104 speedlim 200;
+#X obj 501 179 speedlimit 200;
+#X obj 260 104 speedlimit 200;
+#X floatatom 378 87 8 0 0 0 - - -, f 8;
+#X obj 378 104 speedlimit 200;
 #X msg 378 124 /cs/autocal \$1;
 #X msg 347 213 /cs/autocal;
 #X msg 122 148 /s;
 #X floatatom 475 86 5 0 0 0 - #0-cs_timeout-in -, f 5;
-#X obj 475 103 speedlim 200;
+#X obj 475 103 speedlimit 200;
 #X msg 475 123 /cs/timeout \$1;
 #X obj 339 40 tgl 15 0 empty \$0-cs_0-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 1 1;
 #X obj 354 40 tgl 15 0 empty \$0-cs_1-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 0 255;
 #X obj 369 40 tgl 15 0 empty \$0-cs_2-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 1 1;
 #X obj 384 40 tgl 15 0 empty \$0-cs_3-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 0 255;
 #X obj 399 40 tgl 15 0 empty \$0-cs_4-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 1 1;
 #X obj 414 40 tgl 15 0 empty \$0-cs_5-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 0 255;
 #X obj 429 40 tgl 15 0 empty \$0-cs_6-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 1 1;
 #X obj 444 40 tgl 15 0 empty \$0-cs_7-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 0 255;
 #X obj 459 40 tgl 15 0 empty \$0-cs_8-in empty 17 7 0 10 -262144 -1
 -1 1 1;
 #N canvas 1 115 537 300 cs_enable 0;
@@ -104,7 +104,6 @@
 #X connect 24 0 19 0;
 #X connect 25 0 24 1;
 #X restore 339 59 pd cs_enable;
-#X obj 84 24 declare -path ../bin;
 #N canvas 1 105 450 481 prepend 0;
 #X obj 176 73 inlet;
 #X obj 176 197 makefilename;
@@ -139,24 +138,24 @@
 -1 -1;
 #X obj 384 442 \$1;
 #X msg 384 464 label /b0\$1;
-#X obj 57 52 tgl 15 0 empty \$0-fsr_0-in empty 17 7 0 10 -262144 -1
--1 255 255;
+#X obj 57 52 tgl 15 0 empty \$0-fsr_0-in 0 5 -5 0 10 -262144 -1 -1
+1 1;
 #X obj 72 52 tgl 15 0 empty \$0-fsr_1-in empty 17 7 0 10 -262144 -1
--1 255 255;
-#X obj 87 52 tgl 15 0 empty \$0-fsr_2-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 1 1;
+#X obj 87 52 tgl 15 0 empty \$0-fsr_2-in 2 5 -5 0 10 -262144 -1 -1
+1 1;
 #X obj 102 52 tgl 15 0 empty \$0-fsr_3-in empty 17 7 0 10 -262144 -1
--1 255 255;
-#X obj 117 52 tgl 15 0 empty \$0-fsr_4-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 1 1;
+#X obj 117 52 tgl 15 0 empty \$0-fsr_4-in 4 5 -5 0 10 -262144 -1 -1
+1 1;
 #X obj 132 52 tgl 15 0 empty \$0-fsr_5-in empty 17 7 0 10 -262144 -1
--1 255 255;
-#X obj 147 52 tgl 15 0 empty \$0-fsr_6-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 1 1;
+#X obj 147 52 tgl 15 0 empty \$0-fsr_6-in 6 5 -5 0 10 -262144 -1 -1
+1 1;
 #X obj 162 52 tgl 15 0 empty \$0-fsr_7-in empty 17 7 0 10 -262144 -1
--1 255 255;
-#X obj 177 52 tgl 15 0 empty \$0-fsr_8-in empty 17 7 0 10 -262144 -1
--1 255 255;
+-1 1 1;
+#X obj 177 52 tgl 15 0 empty \$0-fsr_8-in 8 5 -5 0 10 -262144 -1 -1
+1 1;
 #N canvas 1 160 537 300 fsr_enable 0;
 #X obj 110 103 t b f;
 #X obj 71 65 inlet;
@@ -220,7 +219,7 @@
 #X restore 57 71 pd fsr_enable;
 #X msg 343 180 /s/save;
 #X msg 340 151 /s/load;
-#N canvas 232 482 1445 500 receiveOSC 0;
+#N canvas 222 507 1445 500 receiveOSC 0;
 #X obj 130 33 loadbang;
 #X obj 130 55 \$1;
 #X msg 130 77 set /b0\$1;
@@ -371,12 +370,14 @@
 #X obj 518 357 s \$0-cs_timeout-in;
 #X msg 515 329 set \$1;
 #X floatatom 514 311 5 0 0 0 - - -, f 5;
+#X msg 484 231 /s;
+#X obj 29 9 declare -path ../bin -path ../puremapping -path ../av;
 #X connect 1 0 0 0;
 #X connect 2 0 8 0;
 #X connect 3 0 1 0;
 #X connect 4 0 1 0;
 #X connect 5 0 4 0;
-#X connect 5 1 34 0;
+#X connect 5 1 33 0;
 #X connect 5 2 3 0;
 #X connect 6 0 7 0;
 #X connect 7 0 5 0;
@@ -405,30 +406,31 @@
 #X connect 30 0 32 8;
 #X connect 31 0 32 9;
 #X connect 32 0 5 0;
-#X connect 34 0 1 0;
+#X connect 33 0 1 0;
+#X connect 33 0 34 0;
 #X connect 34 0 35 0;
-#X connect 35 0 36 0;
-#X connect 37 0 35 1;
-#X connect 39 0 42 0;
+#X connect 36 0 34 1;
+#X connect 38 0 41 0;
+#X connect 40 0 41 0;
 #X connect 41 0 42 0;
-#X connect 42 0 43 0;
-#X connect 43 0 40 0;
-#X connect 44 0 53 1;
-#X connect 45 0 53 2;
-#X connect 46 0 53 3;
-#X connect 47 0 53 4;
-#X connect 48 0 53 5;
-#X connect 49 0 53 6;
-#X connect 50 0 53 7;
-#X connect 51 0 53 8;
-#X connect 52 0 53 9;
+#X connect 42 0 39 0;
+#X connect 43 0 52 1;
+#X connect 44 0 52 2;
+#X connect 45 0 52 3;
+#X connect 46 0 52 4;
+#X connect 47 0 52 5;
+#X connect 48 0 52 6;
+#X connect 49 0 52 7;
+#X connect 50 0 52 8;
+#X connect 51 0 52 9;
+#X connect 52 0 5 0;
 #X connect 53 0 5 0;
 #X connect 54 0 5 0;
-#X connect 55 0 5 0;
-#X connect 57 0 32 0;
-#X connect 58 0 53 0;
-#X connect 59 0 55 0;
+#X connect 56 0 32 0;
+#X connect 57 0 52 0;
+#X connect 58 0 54 0;
+#X connect 59 0 5 0;
 #X connect 60 0 5 0;
-#X connect 61 0 5 0;
+#X connect 62 0 61 0;
 #X connect 63 0 62 0;
-#X connect 64 0 63 0;
+#X connect 64 0 5 0;
