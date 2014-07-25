@@ -1,0 +1,31 @@
+Cmp-Mod V01 Created by CvPcb (2014-03-19 BZR 4756)-product date = Thu 24 Jul 2014 16:41:29 CEST
+
+BeginCmp
+TimeStamp = /53D11730;
+Reference = P1;
+ValeurCmp = CONN_2;
+IdModule  = Pin_Headers:Pin_Header_Angled_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D11595;
+Reference = Q1;
+ValeurCmp = MOSFET_N;
+IdModule  = Transistors_TO-220:TO-220_FET-GDS_Vertical;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D115A9;
+Reference = R1;
+ValeurCmp = R;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D115FA;
+Reference = RV1;
+ValeurCmp = POT;
+IdModule  = Potentiometers:Potentiometer_WirePads;
+EndCmp
+
+EndListe

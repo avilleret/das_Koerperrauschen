@@ -1,0 +1,234 @@
+Cmp-Mod V01 Created by CvPcb (2014-03-19 BZR 4756)-product date = Thu 24 Jul 2014 16:43:39 CEST
+
+BeginCmp
+TimeStamp = /53D0D66B;
+Reference = AM1;
+ValeurCmp = ARDUINO-MICRO;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0E5CE;
+Reference = K1;
+ValeurCmp = CONN_3;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0E5BF;
+Reference = P1;
+ValeurCmp = CONN_4;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x04;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53D0F71B;
+Reference = P2;
+ValeurCmp = CONN_2;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CE44A7;
+Reference = PELTIER1;
+ValeurCmp = R;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/52A89349;
+Reference = Q1;
+ValeurCmp = MOSFET_P;
+IdModule  = Transistors_TO-220:TO-220_FET-GDS_Vertical_LargePads;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/52A89135;
+Reference = Q2;
+ValeurCmp = MOSFET_N;
+IdModule  = Transistors_TO-220:TO-220_FET-GDS_Vertical_LargePads;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/52A89360;
+Reference = Q3;
+ValeurCmp = MOSFET_P;
+IdModule  = Transistors_TO-220:TO-220_FET-GDS_Vertical_LargePads;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/52A8933B;
+Reference = Q4;
+ValeurCmp = MOSFET_N;
+IdModule  = Transistors_TO-220:TO-220_FET-GDS_Vertical_LargePads;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0DDD5;
+Reference = R1;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0DDE2;
+Reference = R2;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0DDE8;
+Reference = R3;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0DDEE;
+Reference = R4;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFD236;
+Reference = R5;
+ValeurCmp = 470;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFD2D1;
+Reference = R6;
+ValeurCmp = 470;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCB98;
+Reference = R7;
+ValeurCmp = 1k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCD04;
+Reference = R8;
+ValeurCmp = 1k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCC02;
+Reference = R9;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCCCC;
+Reference = R10;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCC4C;
+Reference = R11;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCCBE;
+Reference = R12;
+ValeurCmp = 10k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCC37;
+Reference = R13;
+ValeurCmp = 1k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCCEB;
+Reference = R14;
+ValeurCmp = 1k;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFD359;
+Reference = R15;
+ValeurCmp = 470;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFD353;
+Reference = R16;
+ValeurCmp = 470;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM15mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0DC25;
+Reference = TH1;
+ValeurCmp = THERMISTOR;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0DC44;
+Reference = TH2;
+ValeurCmp = THERMISTOR;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0DC4A;
+Reference = TH3;
+ValeurCmp = THERMISTOR;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D0DC50;
+Reference = TH4;
+ValeurCmp = THERMISTOR;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CE67D3;
+Reference = U1;
+ValeurCmp = 4N33;
+IdModule  = Sockets_DIP:DIP-6__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCCFE;
+Reference = U2;
+ValeurCmp = 4N33;
+IdModule  = Sockets_DIP:DIP-6__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCC7F;
+Reference = U3;
+ValeurCmp = 4N33;
+IdModule  = Sockets_DIP:DIP-6__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CFE204/53CFCCF1;
+Reference = U4;
+ValeurCmp = 4N33;
+IdModule  = Sockets_DIP:DIP-6__300;
+EndCmp
+
+EndListe

@@ -1,0 +1,290 @@
+Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = Thu 12 Dec 2013 12:22:49 CET
+
+BeginCmp
+TimeStamp = /52A739F2;
+Reference = AM1;
+ValeurCmp = ARDUINO-MICRO;
+IdModule  = arduino-micro;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A88597;
+Reference = JP1;
+ValeurCmp = JUMPER;
+IdModule  = jumper;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A99D1E;
+Reference = JP2;
+ValeurCmp = JUMPER;
+IdModule  = jumper;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A75B89;
+Reference = P1;
+ValeurCmp = CONN_8X2;
+IdModule  = he10-16d;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A75AB3;
+Reference = P2;
+ValeurCmp = CONN_8X2;
+IdModule  = he10-16c;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A73AED;
+Reference = R1;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A73B29;
+Reference = R2;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A73B2F;
+Reference = R3;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A73B35;
+Reference = R4;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74216;
+Reference = R5;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A7421C;
+Reference = R6;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74222;
+Reference = R7;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74228;
+Reference = R8;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741FB;
+Reference = R9;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74201;
+Reference = R10;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74207;
+Reference = R11;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A7420D;
+Reference = R12;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741E0;
+Reference = R13;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741E6;
+Reference = R14;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741EC;
+Reference = R15;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741F2;
+Reference = R16;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741C5;
+Reference = R17;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741CB;
+Reference = R18;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741D1;
+Reference = R19;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741D7;
+Reference = R20;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741AA;
+Reference = R21;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741B0;
+Reference = R22;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741B6;
+Reference = R23;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741BC;
+Reference = R24;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A7418F;
+Reference = R25;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74195;
+Reference = R26;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A7419B;
+Reference = R27;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A741A1;
+Reference = R28;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74174;
+Reference = R29;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A7417A;
+Reference = R30;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74180;
+Reference = R31;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74186;
+Reference = R32;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74159;
+Reference = R33;
+ValeurCmp = 10M;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A7415F;
+Reference = R34;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A74165;
+Reference = R35;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52A7416B;
+Reference = R36;
+ValeurCmp = 10M;
+IdModule  = R1;
+EndCmp
+
+EndListe

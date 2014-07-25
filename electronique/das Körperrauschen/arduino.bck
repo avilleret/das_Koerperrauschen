@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0  Date: Mon 16 Dec 2013 11:09:09 CET
+#
+$CMP ARDUINO-MICRO
+D Arduino Micro
+K arduino
+$ENDCMP
+#
+#End Doc Library

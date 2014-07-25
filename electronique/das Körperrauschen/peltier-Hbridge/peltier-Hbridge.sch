@@ -1,0 +1,364 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:arduino
+LIBS:peltier-Hbridge-cache
+EELAYER 24 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 2
+Title "Das Körperrauschen / Heat Control"
+Date "23 Jul 2014"
+Rev ""
+Comp "Antoine Villeret"
+Comment1 "H-bridge for Peltier control"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Sheet
+S 8100 4100 1300 700 
+U 53CFE204
+F0 "H-bridge Peltier Control" 50
+F1 "h-bridge_peltier_control.sch" 50
+F2 "heat" I L 8100 4300 60 
+F3 "cool" I L 8100 4450 60 
+F4 "ena*" I L 8100 4600 60 
+$EndSheet
+$Comp
+L ARDUINO-MICRO AM1
+U 1 1 53D0D66B
+P 3600 4150
+F 0 "AM1" H 3600 3300 60  0000 C CNN
+F 1 "ARDUINO-MICRO" H 3600 5350 60  0000 C CNN
+F 2 "" H 3600 4150 60  0000 C CNN
+F 3 "" H 3600 4150 60  0000 C CNN
+	1    3600 4150
+	1    0    0    -1  
+$EndComp
+Text Label 7900 4300 2    60   ~ 0
+heat
+Text Label 7900 4450 2    60   ~ 0
+cool
+Text Label 7900 4600 2    60   ~ 0
+ena*
+Text Label 2700 4250 2    60   ~ 0
+heat
+Text Label 2700 4350 2    60   ~ 0
+cool
+Text Label 2700 4450 2    60   ~ 0
+ena*
+$Comp
+L THERMISTOR TH1
+U 1 1 53D0DC25
+P 5000 4750
+F 0 "TH1" V 5100 4800 50  0000 C CNN
+F 1 "THERMISTOR" V 4900 4750 50  0000 C CNN
+F 2 "" H 5000 4750 60  0000 C CNN
+F 3 "" H 5000 4750 60  0000 C CNN
+	1    5000 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L THERMISTOR TH2
+U 1 1 53D0DC44
+P 5300 4750
+F 0 "TH2" V 5400 4800 50  0000 C CNN
+F 1 "THERMISTOR" V 5200 4750 50  0000 C CNN
+F 2 "" H 5300 4750 60  0000 C CNN
+F 3 "" H 5300 4750 60  0000 C CNN
+	1    5300 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L THERMISTOR TH3
+U 1 1 53D0DC4A
+P 5600 4750
+F 0 "TH3" V 5700 4800 50  0000 C CNN
+F 1 "THERMISTOR" V 5500 4750 50  0000 C CNN
+F 2 "" H 5600 4750 60  0000 C CNN
+F 3 "" H 5600 4750 60  0000 C CNN
+	1    5600 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L THERMISTOR TH4
+U 1 1 53D0DC50
+P 5900 4750
+F 0 "TH4" V 6000 4800 50  0000 C CNN
+F 1 "THERMISTOR" V 5800 4750 50  0000 C CNN
+F 2 "" H 5900 4750 60  0000 C CNN
+F 3 "" H 5900 4750 60  0000 C CNN
+	1    5900 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR01
+U 1 1 53D0DD5C
+P 4450 3500
+F 0 "#PWR01" H 4450 3500 30  0001 C CNN
+F 1 "GND" H 4450 3430 30  0001 C CNN
+F 2 "" H 4450 3500 60  0000 C CNN
+F 3 "" H 4450 3500 60  0000 C CNN
+	1    4450 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 53D0DDD5
+P 5000 3900
+F 0 "R1" V 5080 3900 40  0000 C CNN
+F 1 "10k" V 5007 3901 40  0000 C CNN
+F 2 "" V 4930 3900 30  0000 C CNN
+F 3 "" H 5000 3900 30  0000 C CNN
+	1    5000 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 53D0DDE2
+P 5300 3900
+F 0 "R2" V 5380 3900 40  0000 C CNN
+F 1 "10k" V 5307 3901 40  0000 C CNN
+F 2 "" V 5230 3900 30  0000 C CNN
+F 3 "" H 5300 3900 30  0000 C CNN
+	1    5300 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R3
+U 1 1 53D0DDE8
+P 5600 3900
+F 0 "R3" V 5680 3900 40  0000 C CNN
+F 1 "10k" V 5607 3901 40  0000 C CNN
+F 2 "" V 5530 3900 30  0000 C CNN
+F 3 "" H 5600 3900 30  0000 C CNN
+	1    5600 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R4
+U 1 1 53D0DDEE
+P 5900 3900
+F 0 "R4" V 5980 3900 40  0000 C CNN
+F 1 "10k" V 5907 3901 40  0000 C CNN
+F 2 "" V 5830 3900 30  0000 C CNN
+F 3 "" H 5900 3900 30  0000 C CNN
+	1    5900 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR02
+U 1 1 53D0E157
+P 5450 5200
+F 0 "#PWR02" H 5450 5200 30  0001 C CNN
+F 1 "GND" H 5450 5130 30  0001 C CNN
+F 2 "" H 5450 5200 60  0000 C CNN
+F 3 "" H 5450 5200 60  0000 C CNN
+	1    5450 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 4300 8100 4300
+Wire Wire Line
+	7900 4450 8100 4450
+Wire Wire Line
+	7900 4600 8100 4600
+Wire Wire Line
+	2850 4250 2700 4250
+Wire Wire Line
+	2850 4350 2700 4350
+Wire Wire Line
+	2850 4450 2700 4450
+Wire Wire Line
+	4300 3450 4450 3450
+Wire Wire Line
+	4450 3450 4450 3500
+Wire Wire Line
+	4300 3650 5900 3650
+Connection ~ 5000 3650
+Connection ~ 5300 3650
+Connection ~ 5600 3650
+Wire Wire Line
+	5000 4150 5000 4500
+Wire Wire Line
+	5000 4450 4300 4450
+Wire Wire Line
+	4300 4350 5300 4350
+Wire Wire Line
+	5300 4150 5300 4500
+Wire Wire Line
+	4300 4250 5600 4250
+Wire Wire Line
+	5600 4150 5600 4500
+Wire Wire Line
+	4300 4150 4850 4150
+Wire Wire Line
+	4850 4150 4850 4200
+Wire Wire Line
+	4850 4200 5900 4200
+Wire Wire Line
+	5900 4150 5900 4500
+Connection ~ 5000 4450
+Connection ~ 5300 4350
+Connection ~ 5600 4250
+Connection ~ 5900 4200
+Wire Wire Line
+	5000 5000 5000 5100
+Wire Wire Line
+	5000 5100 5900 5100
+Wire Wire Line
+	5450 5100 5450 5200
+Wire Wire Line
+	5300 5000 5300 5100
+Connection ~ 5300 5100
+Wire Wire Line
+	5900 5100 5900 5000
+Connection ~ 5450 5100
+Wire Wire Line
+	5600 5000 5600 5100
+Connection ~ 5600 5100
+$Comp
+L CONN_4 P1
+U 1 1 53D0E5BF
+P 1550 5600
+F 0 "P1" V 1500 5600 50  0000 C CNN
+F 1 "CONN_4" V 1600 5600 50  0000 C CNN
+F 2 "" H 1550 5600 60  0000 C CNN
+F 3 "" H 1550 5600 60  0000 C CNN
+	1    1550 5600
+	0    -1   1    0   
+$EndComp
+$Comp
+L CONN_3 K1
+U 1 1 53D0E5CE
+P 2100 5600
+F 0 "K1" V 2050 5600 50  0000 C CNN
+F 1 "CONN_3" V 2150 5600 40  0000 C CNN
+F 2 "" H 2100 5600 60  0000 C CNN
+F 3 "" H 2100 5600 60  0000 C CNN
+	1    2100 5600
+	0    -1   1    0   
+$EndComp
+$Comp
+L GND #PWR03
+U 1 1 53D0E89A
+P 1250 5300
+F 0 "#PWR03" H 1250 5300 30  0001 C CNN
+F 1 "GND" H 1250 5230 30  0001 C CNN
+F 2 "" H 1250 5300 60  0000 C CNN
+F 3 "" H 1250 5300 60  0000 C CNN
+	1    1250 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 5300 1250 5150
+Wire Wire Line
+	1250 5150 1400 5150
+Wire Wire Line
+	1400 5150 1400 5250
+$Comp
+L +12V #PWR04
+U 1 1 53D0EA3F
+P 1500 5150
+F 0 "#PWR04" H 1500 5100 20  0001 C CNN
+F 1 "+12V" H 1500 5250 30  0000 C CNN
+F 2 "" H 1500 5150 60  0000 C CNN
+F 3 "" H 1500 5150 60  0000 C CNN
+	1    1500 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 5150 1500 5250
+Wire Wire Line
+	1700 5250 1700 4050
+Wire Wire Line
+	1700 4050 2850 4050
+Wire Wire Line
+	2850 3950 1600 3950
+Wire Wire Line
+	1600 3950 1600 5250
+$Comp
+L GND #PWR05
+U 1 1 53D0EB28
+P 1850 5300
+F 0 "#PWR05" H 1850 5300 30  0001 C CNN
+F 1 "GND" H 1850 5230 30  0001 C CNN
+F 2 "" H 1850 5300 60  0000 C CNN
+F 3 "" H 1850 5300 60  0000 C CNN
+	1    1850 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1850 5300 1850 5150
+Wire Wire Line
+	1850 5150 2000 5150
+Wire Wire Line
+	2000 5150 2000 5250
+$Comp
+L +12V #PWR06
+U 1 1 53D0ED2C
+P 2100 5150
+F 0 "#PWR06" H 2100 5100 20  0001 C CNN
+F 1 "+12V" H 2100 5250 30  0000 C CNN
+F 2 "" H 2100 5150 60  0000 C CNN
+F 3 "" H 2100 5150 60  0000 C CNN
+	1    2100 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 5150 2100 5250
+Wire Wire Line
+	2200 5250 2200 4150
+Wire Wire Line
+	2200 4150 2850 4150
+NoConn ~ 2850 4550
+NoConn ~ 2850 4650
+NoConn ~ 2850 4750
+NoConn ~ 2850 3850
+NoConn ~ 2850 3750
+NoConn ~ 2850 3650
+NoConn ~ 2850 3550
+NoConn ~ 2850 3450
+NoConn ~ 2850 3350
+NoConn ~ 2850 3250
+NoConn ~ 2850 3150
+NoConn ~ 4300 3150
+NoConn ~ 4300 3250
+NoConn ~ 4300 3350
+NoConn ~ 4300 3550
+NoConn ~ 4300 3950
+NoConn ~ 4300 4050
+NoConn ~ 4300 4550
+NoConn ~ 4300 4650
+NoConn ~ 4300 4750
+$EndSCHEMATC
