@@ -207,9 +207,6 @@ void getAllParams(){
   OSCMessage get_timeout("/timeout");
   CScontrol(get_timeout,0);
   
-  //~OSCMessage get_autocal("/autocal");
-  //~CScontrol(get_autocal,0);
-  
   OSCMessage get_loopDelay("/del");
   SystemControl(get_loopDelay,0);
 }
@@ -285,23 +282,14 @@ void scanCS()
   if ( boardParam.cs_on ){
     for ( cs_id=0 ; cs_id < CS_COUNT; cs_id++ ){
       int j = CS_COUNT;
-      while ( boardParam.cs_enable[cs_id]==0 && j-- ) {
-        cs_id++;
-        cs_id%=CS_COUNT;      
-      }
       if ( boardParam.cs_enable[cs_id] ){
-          //~rawcount = cs[cs_id].capacitiveSensor(boardParam.cs_sensibility);
           rawcount = cs[cs_id].capacitiveSensorRaw(boardParam.cs_sensibility);
           if (rawcount != -2){ // if sensor is timeout, resend last value
             cs_norm[cs_id] = (float) rawcount / (float) boardParam.cs_sensibility;
           } else {
             cs_norm[cs_id] = -2;
           }
-          //~snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/%d",cs_id);
-          //~bundleOUT.add(path).add(cs_norm[cs_id]);
       }
-      //~cs_id++;
-      //~cs_id%=CS_COUNT;
     }
     snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs");
     bundleOUT.add(path).add(cs_norm[0]).add(cs_norm[1]).add(cs_norm[2]).add(cs_norm[3]).add(cs_norm[4]).add(cs_norm[5]).add(cs_norm[6]).add(cs_norm[7]).add(cs_norm[8]);
@@ -311,9 +299,6 @@ void scanCS()
 /* scan force sensing resistor */
 void scanFSR()
 {
-  //~snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr");
-  //~OSCMessage msgFSR(path);
-  //~OSCMessage msgFSR("/fsr");
   if ( boardParam.fsr_on ){
     //~ put COMMON_PIN to LOW to use it as a reference for the FSR
     digitalWrite(COMMON_PIN,LOW);  
@@ -323,33 +308,17 @@ void scanFSR()
         digitalWrite(fsr_pin[i],HIGH);
         rawcount = analogRead(fsr_pin[i]);
         fsr[i] = 1023 - rawcount;
-        //~snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr/%d",i);
-        //~bundleOUT.add(path).add(normcount);
-        //~msgFSR.add(normcount);
-        // disable internal pull-up
         digitalWrite(fsr_pin[i],LOW);
       }
     }
     snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr");
     bundleOUT.add(path).add(fsr[0]).add(fsr[1]).add(fsr[2]).add(fsr[3]).add(fsr[4]).add(fsr[5]).add(fsr[6]).add(fsr[7]).add(fsr[8]);
   }
-
-  //~bundleOUT.add(msgFSR);
-  //~msgFSR.send(SLIPSerial);
-  //~SLIPSerial.endPacket();
-  //~msgFSR.empty();
 }
 
 /* classic arduino loop */
 void loop()
 {
-  /*
-   * this takes about 10ms to check Serial...
-  if ( !Serial ){
-    setup(); // if board is disconnected, "restart the sketch"
-  }
-  */
-  
   receiveOSC();
 
   scanCS();
@@ -364,6 +333,4 @@ void loop()
   bundleOUT.send(SLIPSerial);
   SLIPSerial.endPacket();
   bundleOUT.empty();
-  
-  //~delay(boardParam.loopDelay);
 }
