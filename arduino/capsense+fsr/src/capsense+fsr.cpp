@@ -289,6 +289,8 @@ void scanCS()
           } else {
             cs_norm[cs_id] = -2;
           }
+      } else { // sensor is disabled
+        cs_norm[cs_id] = -1;
       }
     }
     snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs");
