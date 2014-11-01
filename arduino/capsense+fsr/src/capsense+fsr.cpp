@@ -14,10 +14,10 @@ SLIPEncodedSerial SLIPSerial(Serial);
 #endif
 
 /*
- * Antoine Villeret - EnsadLab 2013
+ * Antoine Villeret - 2013 - 2014
  * project : das Körperrauschen
  *
- * Scan capacitive and FSR sensor and send values 
+ * Scan capacitive and FSR sensors and send values 
  * through USB in OSC SLIP-encoded messages.
  * Uses a high value resistor e.g. 40M between send pin and receive pin.
  * Resistor effects sensitivity, experiment with values, 50K - 50M. 
@@ -65,9 +65,10 @@ static const int fsr_pin[] = {A0,A1,A2,A3,A4,A5,A11,A10,A9}; // FSR pin
 
 /* global parameters */
 // since this struct is saved 'as is' in EEPROM, please add new element at the end
+// otherwise you'll have to rewrite them all..
 typedef struct {
   uint8_t address;
-  bool fsr_enable[15];
+  bool fsr_enable[15]; // 15 > 9 : take a little overhead in case we want to upgrade board...
   bool fsr_on;
   bool cs_enable[15];
   bool cs_on;
@@ -87,6 +88,7 @@ float cs_norm[9] ={0.,0.,0.,0.,0.,0.,0.,0.,0.};
 int fsr[9]={0,0,0,0,0,0,0,0,0};
 OSCBundle bundleOUT;
 
+/* parse message then with /fsr prefix */
 void FSRcontrol(OSCMessage &msg, int addrOffset)
 {
   if (msg.fullMatch("/on",addrOffset)) {
@@ -98,6 +100,7 @@ void FSRcontrol(OSCMessage &msg, int addrOffset)
     }
   } else if ( msg.fullMatch("/enable",addrOffset) ){
     if ( msg.size() == 0 ){
+      // if /enable is sent without any arguments, then send back active sensors list
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr/enable");
       OSCMessage msgOUT(path);
       for (i=0;i<CS_COUNT;i++){
@@ -107,6 +110,7 @@ void FSRcontrol(OSCMessage &msg, int addrOffset)
       SLIPSerial.endPacket();
       msgOUT.empty();
     } else {
+      // else treat values list to enable/disable sensors
       for (i=0;i<msg.size() && i<CS_COUNT;i++){
         boardParam.fsr_enable[i] = msg.getInt(i) > 0;
       }
@@ -114,6 +118,7 @@ void FSRcontrol(OSCMessage &msg, int addrOffset)
   }
 }
 
+/* parse message then with /cs prefix */
 void CScontrol(OSCMessage &msg, int addrOffset)
 {
   if (msg.fullMatch("/on",addrOffset)) {
@@ -124,7 +129,8 @@ void CScontrol(OSCMessage &msg, int addrOffset)
       boardParam.cs_on = msg.getInt(0) > 0;
     }
   } else if ( msg.fullMatch("/enable", addrOffset) ) {
-    if ( msg.size() == 0 ){ // if no data, send back current settings
+    if ( msg.size() == 0 ){ 
+      // if /enable is sent without any arguments, then send back active sensors list
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/enable");
       OSCMessage msgOUT(path);
       for (i=0;i<CS_COUNT;i++){
@@ -134,6 +140,7 @@ void CScontrol(OSCMessage &msg, int addrOffset)
       SLIPSerial.endPacket();
       msgOUT.empty();
     } else {
+      // else treat values list to enable/disable sensors
       for (i=0;i<msg.size() && i<CS_COUNT;i++){
         boardParam.cs_enable[i] = msg.getInt(i) > 0;
       }
@@ -180,6 +187,7 @@ void CScontrol(OSCMessage &msg, int addrOffset)
   }
 }
 
+/* parse message then with /s (aka system) prefix */
 void SystemControl(OSCMessage &msg, int addrOffset){
   if (msg.fullMatch("/del",addrOffset)) { // set the delay on each loop
     if (msg.size() == 0){
@@ -196,13 +204,15 @@ void SystemControl(OSCMessage &msg, int addrOffset){
   } else if ( msg.fullMatch("/getParams",addrOffset) ){
     getAllParams();
   } else {
+    // send back build data and time
     snprintf(path+offset,MAX_STRING_LENGTH-offset,"/s/date");
     bundleOUT.add(path).add(__DATE__);
     snprintf(path+offset,MAX_STRING_LENGTH-offset,"/s/time");
     bundleOUT.add(path).add(__TIME__);
   }
 }
- 
+
+/* send back all parameters throught OSC */
 void getAllParams(){
   OSCMessage get_on("/on");
   FSRcontrol(get_on,0);
@@ -225,10 +235,12 @@ void getAllParams(){
   SystemControl(get_loopDelay,0);
 }
  
+/* save all parameters to EEPROM */
 void saveParam(){
   eeprom_write_block(&boardParam, 0, sizeof(BoardParam));   
 }
 
+/* load parameters form EEPROM and send them through OSC */
 void loadParam(){
   eeprom_read_block(&boardParam, 0, sizeof(BoardParam)); 
   
@@ -240,6 +252,7 @@ void loadParam(){
   getAllParams();
 }
 
+/* needed Setup() function */
 void setup()                    
 {
   Serial.begin(115200);
@@ -262,6 +275,7 @@ void setup()
   boardParam.fsr_on=false;
 }
 
+/* read serial, decode SLIP and dispatch message */
 void receiveOSC(){
   OSCBundle bundleIN;
   if ( SLIPSerial.available() > 0 ){
@@ -286,6 +300,7 @@ void receiveOSC(){
     
 }
 
+/* scan capacitive sensors */
 void scanCS()
 {
   if ( boardParam.cs_on ){
@@ -314,6 +329,7 @@ void scanCS()
   }
 }
 
+/* scan force sensing resistor */
 void scanFSR()
 {
   //~snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr");
@@ -345,6 +361,7 @@ void scanFSR()
   //~msgFSR.empty();
 }
 
+/* classic arduino loop */
 void loop()
 {
   /*
