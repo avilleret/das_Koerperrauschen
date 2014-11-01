@@ -76,7 +76,6 @@ typedef struct {
   uint16_t cs_sensibility;
   uint16_t cs_timeout;
   unsigned long cs_autocal;
-  uint16_t loopDelay;
 } BoardParam;
 /* end of global parameters */
 
@@ -168,15 +167,7 @@ void CScontrol(OSCMessage &msg, int addrOffset)
 
 /* parse message then with /s (aka system) prefix */
 void SystemControl(OSCMessage &msg, int addrOffset){
-  if (msg.fullMatch("/del",addrOffset)) { // set the delay on each loop
-    if (msg.size() == 0){
-      snprintf(path+offset,MAX_STRING_LENGTH-offset,"/s/del");
-      bundleOUT.add(path).add((int) boardParam.loopDelay);
-    } else if (msg.isInt(0))
-    {
-      boardParam.loopDelay = msg.getInt(0)>0?msg.getInt(0):0;
-    }
-  } else if (msg.fullMatch("/save",addrOffset)){
+  if (msg.fullMatch("/save",addrOffset)){
     saveParam();
   } else if (msg.fullMatch("/load",addrOffset)){
     loadParam();
@@ -207,8 +198,6 @@ void getAllParams(){
   OSCMessage get_timeout("/timeout");
   CScontrol(get_timeout,0);
   
-  OSCMessage get_loopDelay("/del");
-  SystemControl(get_loopDelay,0);
 }
  
 /* save all parameters to EEPROM */
@@ -221,7 +210,6 @@ void loadParam(){
   eeprom_read_block(&boardParam, 0, sizeof(BoardParam)); 
   
   // some garde fou
-  if ( boardParam.loopDelay > 1000 ) boardParam.loopDelay=0;
   if ( boardParam.cs_timeout > 2000 ) boardParam.cs_timeout=100;
   if ( boardParam.cs_sensibility > 2000 ) boardParam.cs_sensibility=30;
   
