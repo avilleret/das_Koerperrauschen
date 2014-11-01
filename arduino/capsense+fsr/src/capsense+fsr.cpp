@@ -103,7 +103,7 @@ void FSRcontrol(OSCMessage &msg, int addrOffset)
       // if /enable is sent without any arguments, then send back active sensors list
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr/enable");
       OSCMessage msgOUT(path);
-      for (i=0;i<CS_COUNT;i++){
+      for (i=0;i<FSR_COUNT;i++){
         msgOUT.add(boardParam.fsr_enable[i]);
       }
       msgOUT.send(SLIPSerial);
@@ -111,7 +111,7 @@ void FSRcontrol(OSCMessage &msg, int addrOffset)
       msgOUT.empty();
     } else {
       // else treat values list to enable/disable sensors
-      for (i=0;i<msg.size() && i<CS_COUNT;i++){
+      for (i=0;i<msg.size() || i<FSR_COUNT;i++){
         boardParam.fsr_enable[i] = msg.getInt(i) > 0;
       }
     }
@@ -141,7 +141,7 @@ void CScontrol(OSCMessage &msg, int addrOffset)
       msgOUT.empty();
     } else {
       // else treat values list to enable/disable sensors
-      for (i=0;i<msg.size() && i<CS_COUNT;i++){
+      for (i=0;i<msg.size() || i<CS_COUNT;i++){
         boardParam.cs_enable[i] = msg.getInt(i) > 0;
       }
     }
@@ -152,27 +152,6 @@ void CScontrol(OSCMessage &msg, int addrOffset)
     } else if (msg.isInt(0)) {
       boardParam.cs_sensibility = msg.getInt(0) > 0 ? msg.getInt(0) : 1;
     }
-  /* desactivate /reset message, no more needed without CS_AutoCal
-  } else if ( msg.fullMatch("/reset", addrOffset) ) {
-    for ( i=0; i<CS_COUNT ; i++)
-    {
-      cs[i].reset_CS_AutoCal(); // reset all sensors
-    }
-  */
-  /* desactivate autocalibration  
-  } else if ( msg.fullMatch("/autocal", addrOffset) ) {
-    if (msg.size() == 0){
-      snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/autocal");
-      bundleOUT.add(path).add( (int) boardParam.cs_autocal);
-    } else if (msg.isInt(0))
-    {
-      boardParam.cs_autocal=msg.getInt(0);
-      for ( i=0; i<CS_COUNT ; i++) 
-      {
-        //~cs[i].set_CS_AutocaL_Millis(boardParam.cs_autocal);
-      }
-    }
-  */
   } else if ( msg.fullMatch("/timeout", addrOffset) ) {
     if (msg.size() == 0){
       snprintf(path+offset,MAX_STRING_LENGTH-offset,"/cs/timeout");
