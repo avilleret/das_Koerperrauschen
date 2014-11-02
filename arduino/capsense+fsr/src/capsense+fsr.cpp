@@ -299,6 +299,8 @@ void scanFSR()
         rawcount = analogRead(fsr_pin[i]);
         fsr[i] = 1023 - rawcount;
         digitalWrite(fsr_pin[i],LOW);
+      } else {
+        fsr[i] = -1;
       }
     }
     snprintf(path+offset,MAX_STRING_LENGTH-offset,"/fsr");
