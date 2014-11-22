@@ -1,4 +1,4 @@
-#N canvas 289 494 737 425 10;
+#N canvas 287 506 737 425 10;
 #X declare -path ../bin;
 #X obj 174 194 unpackOSCstream;
 #X obj 10 19 declare -path ../bin;
@@ -51,12 +51,10 @@
 #X obj 54 295 t a b;
 #X obj 54 339 list prepend set;
 #X obj 54 361 list trim;
-#X msg 54 383;
 #X msg 100 299 0;
 #X msg 99 208 1;
 #X obj 54 317 list split 1;
-#X obj 14 246 loadbang;
-#X msg 14 268 set;
+#X obj 54 383 print receive_from:\$1;
 #X connect 0 0 4 0;
 #X connect 0 0 24 0;
 #X connect 2 0 0 0;
@@ -83,12 +81,10 @@
 #X connect 22 0 2 0;
 #X connect 23 0 9 0;
 #X connect 24 0 25 0;
-#X connect 25 0 31 0;
-#X connect 25 1 29 0;
+#X connect 25 0 30 0;
+#X connect 25 1 28 0;
 #X connect 26 0 27 0;
-#X connect 27 0 28 0;
+#X connect 27 0 31 0;
+#X connect 28 0 24 1;
 #X connect 29 0 24 1;
-#X connect 30 0 24 1;
-#X connect 31 0 26 0;
-#X connect 32 0 33 0;
-#X connect 33 0 28 0;
+#X connect 30 0 26 0;

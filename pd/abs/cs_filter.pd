@@ -1,4 +1,4 @@
-#N canvas 1 179 996 881 10;
+#N canvas 1 198 996 881 10;
 #X declare -path ../nusmuk-audio;
 #X declare -path ../puremapping -path ../av;
 #X obj 143 732 * 1;
@@ -46,7 +46,7 @@
 #X floatatom 356 333 5 0 0 0 - - -, f 5;
 #X obj 251 280 iir 5;
 #X obj 143 754 moses 1;
-#X obj 143 837 t f;
+#X obj 143 817 t f;
 #X text 801 346 baseline;
 #X obj 759 374 timeroll 100 baseline;
 #X obj 550 375 timeroll 100 raw_baseline;
@@ -67,7 +67,7 @@
 #X obj 761 568 spigot;
 #X obj 794 548 r \$0-display_data;
 #X obj 320 167 tgl 15 0 \$0-display_data empty display_data 17 7 0
-10 -262144 -1 -1 0 1;
+10 -262144 -1 -1 1 1;
 #X floatatom 803 328 5 0 0 0 - - -, f 5;
 #X obj 56 53 resample 10;
 #X obj 723 17 declare -path ../nusmuk-audio;
