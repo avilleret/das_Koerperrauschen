@@ -235,8 +235,6 @@ void setup()
     cs[i].set_CS_AutocaL_Millis(boardParam.cs_autocal);
     cs[i].set_CS_Timeout_Millis(boardParam.cs_timeout);
   }
-  boardParam.cs_on=true;
-  boardParam.fsr_on=false;
 }
 
 /* read serial, decode SLIP and dispatch message */
