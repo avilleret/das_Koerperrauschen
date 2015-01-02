@@ -1,0 +1,221 @@
+#N canvas 523 249 1001 619 10;
+#X declare -path ../pd-externals/nusmuk-audio;
+#X obj 489 368 vsl 15 128 0 127 0 1 LFO_freq empty empty 0 -9 0 10
+-262144 -1 -1 5100 1;
+#X obj 546 367 vsl 15 128 0 127 0 1 LFO_shape set_LFO_shape empty 0
+-9 0 10 -262144 -1 -1 6350 1;
+#X obj 843 375 vsl 15 128 0 127 0 1 disto empty empty 0 -9 0 10 -262144
+-1 -1 10600 1;
+#X obj 210 86 vsl 15 128 0 127 0 1 VCO_freq VCO_freq_in empty 0 -9
+0 10 -262144 -1 -1 220 1;
+#X obj 329 86 vsl 15 128 0 127 0 1 VCO_mod empty empty 0 -9 0 10 -262144
+-1 -1 4900 1;
+#X obj 523 84 vsl 15 128 0 127 0 1 VCF_freq VCF_freq_in empty 0 -9
+0 10 -262144 -1 -1 318 1;
+#X obj 578 86 vsl 15 128 0 127 0 1 VCF_q VCF_q_in empty 0 -9 0 10 -262144
+-1 -1 9690 1;
+#X text 486 505 LFO freq;
+#X text 532 528 LFO shape;
+#X text 328 219 Mod LFO;
+#X text 522 222 VCF freq;
+#X obj 628 84 vsl 15 128 0 127 0 1 VCF_mod VCF_mod_in empty 0 -9 0
+10 -262144 -1 -1 6201 1;
+#X text 579 242 Q;
+#X obj 603 366 vsl 15 128 0 127 0 1 LFO_symetry set_LFO_symetry empty
+0 -9 0 10 -262144 -1 -1 6350 1;
+#X text 837 521 disto;
+#X obj 877 441 vradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X text 904 487 disto shape;
+#X text 207 220 VCO freq;
+#X obj 683 362 vradio 15 1 0 7 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 270 86 vsl 15 128 0 127 0 1 VCO_pwm empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 210 275 s VCO_tri_square;
+#X obj 210 255 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 265 239 VCO pwm /shape;
+#X text 601 505 LFO symetry;
+#X text 628 224 Mod LFO;
+#X text 207 58 VCO;
+#X text 521 53 VCF;
+#N canvas 866 511 274 272 disto_shape 0;
+#X obj 21 139 unpack f f f f;
+#X obj 21 163 s disto1_A;
+#X obj 48 184 s disto1_B;
+#X obj 75 203 s disto2_A;
+#X obj 102 224 s disto2_B;
+#X msg 21 55 1 0 0 0;
+#X msg 36 74 0 0 1 0;
+#X msg 52 93 1 0.3 1 -0.3;
+#X msg 68 112 1 -0.5 1 0.5;
+#X obj 21 35 sel 0 1 2 3;
+#X obj 22 9 inlet;
+#X obj 120 37 loadbang;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 0 2 3 0;
+#X connect 0 3 4 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 5 0;
+#X connect 9 1 6 0;
+#X connect 9 2 7 0;
+#X connect 9 3 8 0;
+#X connect 10 0 9 0;
+#X connect 11 0 6 0;
+#X restore 877 508 pd disto_shape;
+#X text 705 485 LFO shape preset;
+#X text 487 333 LFO;
+#N canvas 1 105 450 300 LFO 0;
+#X obj 51 242 s set_LFO_shape;
+#X obj 51 222 unpack f f;
+#X obj 108 262 s set_LFO_symetry;
+#X msg 79 118 0 0;
+#X msg 65 100 0 63.5;
+#X msg 93 136 0 127;
+#X msg 51 82 63.5 63.5;
+#X msg 107 154 127 63.5;
+#X msg 121 172 127 10;
+#X msg 135 190 127 117;
+#X obj 51 63 sel 0 1 2 3 4 5 6;
+#X obj 51 42 inlet;
+#X connect 1 0 0 0;
+#X connect 1 1 2 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
+#X connect 6 0 1 0;
+#X connect 7 0 1 0;
+#X connect 8 0 1 0;
+#X connect 9 0 1 0;
+#X connect 10 0 6 0;
+#X connect 10 1 4 0;
+#X connect 10 2 3 0;
+#X connect 10 3 5 0;
+#X connect 10 4 7 0;
+#X connect 10 5 8 0;
+#X connect 10 6 9 0;
+#X connect 11 0 10 0;
+#X restore 683 509 pd LFO shape;
+#X text 704 360 sin;
+#X text 703 377 triangle;
+#X text 705 421 square;
+#X text 703 437 rectangle 1;
+#X text 704 391 saw 1;
+#X text 704 407 saw 2;
+#X text 703 452 rectangle 2;
+#X obj 389 86 vsl 15 128 0 127 0 1 VCO_mod_ADSR empty empty 0 -9 0
+10 -262144 -1 -1 0 1;
+#X text 388 219 Mod ARSR;
+#X obj 688 84 vsl 15 128 0 127 0 1 VCF_mod_ADSR empty empty 0 -9 0
+10 -262144 -1 -1 7800 1;
+#X text 688 224 Mod ADSR;
+#X obj 843 88 vsl 15 128 0 127 0 1 VCA VCA_in empty 0 -9 0 10 -262144
+-1 -1 3301 1;
+#X text 841 57 VCA;
+#X text 845 227 Amplitude;
+#X text 202 351 ADSR;
+#X obj 43 371 tgl 50 0 on_off empty empty 17 7 0 10 -4034 -1 -1 0 1
+;
+#X text 41 428 note on / off;
+#X obj 206 376 vsl 15 128 0 127 0 1 ADSR_A empty empty 0 -9 0 10 -262144
+-1 -1 2500 1;
+#X obj 269 376 vsl 15 128 0 127 0 1 ADSR_D empty empty 0 -9 0 10 -262144
+-1 -1 4300 1;
+#X obj 327 377 vsl 15 128 0 127 0 1 ADSR_S empty empty 0 -9 0 10 -262144
+-1 -1 10200 1;
+#X obj 386 377 vsl 15 128 0 2550 0 1 ADSR_R empty empty 0 -9 0 10 -262144
+-1 -1 1700 1;
+#X text 204 512 Attack;
+#X text 267 532 Decay;
+#X text 326 514 Sustain;
+#X text 388 533 Release;
+#X text 40 350 Gate;
+#X msg 43 313 1;
+#N canvas 99 863 450 165 dsp 0;
+#X obj 33 89 analog_synth 1;
+#X obj 131 90 analog_synth 2;
+#X obj 234 90 analog_synth 3;
+#X obj 335 90 analog_synth 4;
+#X restore 41 56 pd dsp;
+#X obj 43 249 loadbang;
+#N canvas 40 197 1015 549 mapping 0;
+#X obj 434 109 metro 10;
+#X obj 434 42 loadbang;
+#X obj 434 87 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 434 64 1;
+#X obj 597 181 tab_sum fsr;
+#X obj 823 275 s VCA_in;
+#X obj 337 202 tab_min_max fsr;
+#X obj 424 281 s VCO_freq_in;
+#X obj 424 249 mapping2float 0 127;
+#X obj 823 243 mapping2float 30 127;
+#X obj 683 275 s VCF_q_in;
+#X obj 683 243 mapping2float 100 0;
+#X obj 553 275 s VCF_mod_in;
+#X obj 553 243 mapping2float 64 0;
+#X obj 434 130 t b b b;
+#X obj 305 342 >;
+#X obj 320 310 f;
+#X obj 266 272 t b f f;
+#X obj 272 379 spigot;
+#X obj 342 379 spigot;
+#X obj 375 349 == 0;
+#X floatatom 340 418 5 0 0 0 - - -, f 5;
+#X floatatom 272 401 5 0 0 0 - - -, f 5;
+#X obj 236 229 moses 0.2;
+#X obj 211 459 s VCF_freq_in;
+#X obj 141 175 tab_min_max cs;
+#X obj 72 210 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 242 1;
+#X obj 364 226 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 225 1;
+#X obj 602 214 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 211 435 mapping2float 2 64;
+#X connect 0 0 14 0;
+#X connect 1 0 3 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 1 9 0;
+#X connect 4 1 11 0;
+#X connect 4 1 13 0;
+#X connect 4 1 28 0;
+#X connect 6 2 8 0;
+#X connect 6 2 16 1;
+#X connect 6 2 27 0;
+#X connect 8 0 7 0;
+#X connect 9 0 5 0;
+#X connect 11 0 10 0;
+#X connect 13 0 12 0;
+#X connect 14 0 25 0;
+#X connect 14 1 6 0;
+#X connect 14 2 4 0;
+#X connect 15 0 18 1;
+#X connect 15 0 20 0;
+#X connect 16 0 15 1;
+#X connect 16 0 19 0;
+#X connect 17 0 16 0;
+#X connect 17 1 18 0;
+#X connect 17 2 15 0;
+#X connect 18 0 22 0;
+#X connect 18 0 29 0;
+#X connect 19 0 21 0;
+#X connect 20 0 19 1;
+#X connect 23 0 29 0;
+#X connect 23 1 17 0;
+#X connect 25 2 23 0;
+#X connect 25 2 26 0;
+#X connect 29 0 24 0;
+#X restore 41 81 pd mapping;
+#X obj 32 14 declare -path ../pd-externals/nusmuk-audio;
+#X connect 15 0 27 0;
+#X connect 18 0 30 0;
+#X connect 21 0 20 0;
+#X connect 57 0 46 0;
+#X connect 59 0 57 0;
