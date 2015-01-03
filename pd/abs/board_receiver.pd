@@ -1,4 +1,4 @@
-#N canvas 426 96 415 506 10;
+#N canvas 451 96 415 506 10;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
 #X declare -path ../puremapping;
@@ -27,7 +27,7 @@
 #X declare -path ../pd-externals/puremapping -path ../av;
 #X declare -path ../pd-externals/nusmuk-audio;
 #X declare -path ../bin;
-#X obj 262 1 cnv 15 140 50 \$0-boardName_out \$0-boardName /b01 10
+#X obj 262 1 cnv 15 140 50 \$0-boardName_out \$0-boardName /b00 10
 24 0 48 -233017 -66577 0;
 #N canvas 260 290 1479 739 display_fsr 0;
 #X obj 170 -14 inlet;
@@ -89,7 +89,7 @@
 #X obj 198 394 spigot;
 #X obj 231 358 r \$0-gui;
 #X obj 238 472 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 308 394 spigot;
 #X obj 341 358 r \$0-gui;
 #X obj 278 472 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -97,23 +97,23 @@
 #X obj 418 394 spigot;
 #X obj 451 358 r \$0-gui;
 #X obj 318 472 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4 1;
+-1 -1 1 1;
 #X obj 528 394 spigot;
 #X obj 561 358 r \$0-gui;
 #X obj 358 472 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 23 1;
 #X obj 638 394 spigot;
 #X obj 671 358 r \$0-gui;
 #X obj 398 472 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2 1;
+-1 -1 12 1;
 #X obj 748 394 spigot;
 #X obj 781 358 r \$0-gui;
 #X obj 438 472 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 19 1;
+-1 -1 0 1;
 #X obj 858 394 spigot;
 #X obj 891 358 r \$0-gui;
 #X obj 478 472 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12 1;
+-1 -1 0 1;
 #X obj 968 394 spigot;
 #X obj 1001 358 r \$0-gui;
 #X obj 518 472 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -604,7 +604,7 @@
 #X obj 427 412 r \$0-gui;
 #X floatatom 284 512 5 0 0 0 - - -, f 5;
 #X obj 284 536 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 129 1;
+-1 -1 12700 1;
 #X obj 284 448 spigot;
 #X obj 317 412 r \$0-gui;
 #X obj 1042 85 nbx 5 14 -1e+37 1e+37 0 1 empty empty empty 0 -8 0 10
@@ -641,35 +641,35 @@
 #X obj 284 470 speedlimit 40;
 #X floatatom 324 512 5 0 0 0 - - -, f 5;
 #X obj 324 536 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 12700 1;
 #X obj 394 470 speedlimit 40;
 #X floatatom 364 512 5 0 0 0 - - -, f 5;
 #X obj 364 536 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 328 1;
+-1 -1 12700 1;
 #X obj 504 470 speedlimit 40;
 #X floatatom 404 512 5 0 0 0 - - -, f 5;
 #X obj 404 536 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 12700 1;
 #X obj 614 470 speedlimit 40;
 #X floatatom 444 512 5 0 0 0 - - -, f 5;
 #X obj 444 536 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 199 1;
+-1 -1 12700 1;
 #X obj 724 470 speedlimit 40;
 #X floatatom 484 512 5 0 0 0 - - -, f 5;
 #X obj 484 536 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 376 1;
+-1 -1 12700 1;
 #X obj 834 470 speedlimit 40;
 #X floatatom 524 512 5 0 0 0 - - -, f 5;
 #X obj 524 536 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 324 1;
+-1 -1 12700 1;
 #X obj 944 470 speedlimit 40;
 #X floatatom 564 512 5 0 0 0 - - -, f 5;
 #X obj 564 536 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 12700 1;
 #X obj 1054 470 speedlimit 40;
 #X floatatom 604 512 5 0 0 0 - - -, f 5;
 #X obj 604 536 vsl 20 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 12700 1;
 #X obj 1164 470 speedlimit 40;
 #X obj 1354 41 loadbang;
 #X obj 1354 63 del 10000;
@@ -1097,7 +1097,7 @@
 #X restore 3 26 pd receiveOSC;
 #X obj 3 6 tgl 15 0 empty empty monitor 17 7 0 10 -262144 -1 -1 0 1
 ;
-#N canvas 1045 250 406 370 gui 0;
+#N canvas 1041 282 406 370 gui 0;
 #X obj 20 5 loadbang;
 #X obj 20 47 symbol \$1;
 #X msg 20 69 label \$1;
@@ -1117,20 +1117,21 @@
 #X obj 220 293 hcs/sys_gui;
 #X obj 276 192 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X msg 114 291 +\$1+\$2;
-#X obj 114 313 symbol;
-#X obj 113 270 pack;
-#X floatatom 131 247 5 0 0 0 - - -, f 5;
-#X floatatom 87 249 5 0 0 0 - - -, f 5;
-#X obj 153 274 t b f;
-#X obj 101 208 * 425;
+#X msg 114 311 +\$1+\$2;
+#X obj 114 333 symbol;
+#X obj 113 290 pack;
+#X floatatom 131 267 5 0 0 0 - - -, f 5;
+#X floatatom 87 269 5 0 0 0 - - -, f 5;
+#X obj 153 294 t b f;
 #X obj 333 174 s board-\$1;
 #X msg 333 152 vis 1;
 #X obj 288 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 288 106 s \$0-gui;
 #X msg 288 65 1;
-#X obj 145 213 * 550;
+#X obj 145 233 * 550;
+#X obj 124 200 + 1;
+#X obj 101 228 * 450;
 #X connect 0 0 9 0;
 #X connect 1 0 2 0;
 #X connect 1 0 5 0;
@@ -1142,13 +1143,13 @@
 #X connect 8 0 14 0;
 #X connect 9 0 1 0;
 #X connect 9 1 7 0;
-#X connect 9 1 25 0;
-#X connect 9 1 28 0;
+#X connect 9 1 24 0;
+#X connect 9 1 27 0;
 #X connect 10 0 11 0;
 #X connect 11 0 13 0;
 #X connect 11 1 12 0;
-#X connect 12 0 29 0;
-#X connect 13 0 23 0;
+#X connect 12 0 28 0;
+#X connect 13 0 29 0;
 #X connect 14 0 15 0;
 #X connect 16 0 7 0;
 #X connect 17 0 18 0;
@@ -1158,11 +1159,12 @@
 #X connect 21 0 19 0;
 #X connect 22 0 19 0;
 #X connect 22 1 19 1;
-#X connect 23 0 19 0;
-#X connect 25 0 24 0;
-#X connect 26 0 27 0;
-#X connect 28 0 26 0;
-#X connect 29 0 19 1;
+#X connect 24 0 23 0;
+#X connect 25 0 26 0;
+#X connect 27 0 25 0;
+#X connect 28 0 19 1;
+#X connect 29 0 30 0;
+#X connect 30 0 19 0;
 #X restore 96 3 pd gui;
 #X obj 96 22 declare -path ../bin;
 #X obj 139 3 namecanvas board-\$1;
