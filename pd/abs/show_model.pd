@@ -1,4 +1,4 @@
-#N canvas 255 323 1658 712 10;
+#N canvas 259 367 1658 712 10;
 #X declare -path ../data;
 #X obj 1003 508 model;
 #X obj 1003 427 rotateXYZ 45 -45 0, f 19;
@@ -14,7 +14,7 @@
 #X obj 1003 283 gemframebuffer;
 #X obj 1154 264 pix_texture;
 #X obj 1154 244 translateXYZ;
-#N canvas 315 621 531 396 repeat 1;
+#N canvas 1 652 531 396 repeat 0;
 #X obj 108 47 inlet;
 #X obj 108 69 t b a b;
 #X msg 108 91 4;
@@ -67,9 +67,9 @@
 #X connect 14 0 4 1;
 #X restore 212 235 pd rotate;
 #X msg 204 289 \$1 \$2;
-#X msg 258 286 15 -90;
 #X msg 305 287 90 0;
 #X msg 346 286 15 90;
+#X msg 258 287 15 -90;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 1 5 1;
@@ -88,9 +88,9 @@
 #X connect 13 0 14 0;
 #X connect 14 0 11 0;
 #X connect 15 0 16 0;
-#X connect 15 1 18 0;
-#X connect 15 2 19 0;
-#X connect 15 3 20 0;
+#X connect 15 1 20 0;
+#X connect 15 2 18 0;
+#X connect 15 3 19 0;
 #X connect 16 0 17 0;
 #X connect 17 0 10 0;
 #X connect 18 0 10 0;
@@ -100,17 +100,20 @@
 #X obj 1040 403 unpack;
 #X obj 1177 190 unpack 0 0;
 #X obj 1003 310 translateXYZ 0 0 -1.4;
-#N canvas 137 516 450 300 fb_param 0;
-#X obj -362 80 loadbang;
-#X obj -362 136 outlet;
-#X msg -362 102 color 0 0 0 0 \, dimen 256 256 \, format RGBA \, perspec
+#N canvas 853 644 450 300 fb_param 0;
+#X obj 48 80 loadbang;
+#X obj 48 136 outlet;
+#X msg 69 24 color 0 0 0 0 \, dimen 256 256 \, format RGBA \, perspec
 -0.2 0.2 -0.2 0.2 0.2 5;
-#X connect 0 0 2 0;
+#X msg 37 101 color 0 0 0 0 \, dimen 1024 1024 \, format RGBA \, perspec
+-0.2 0.2 -0.2 0.2 0.2 5;
+#X connect 0 0 3 0;
 #X connect 2 0 1 0;
+#X connect 3 0 1 0;
 #X restore 953 176 pd fb_param;
 #X obj 1154 286 rectangle 4 4;
 #X obj 1177 212 * 4;
-#X obj 1127 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 1127 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 1127 108 alpha;
 #X obj 1127 83 gemhead -1;
@@ -126,7 +129,7 @@
 #X msg 1024 473 rescale 1 \, material 0 \, open ../data/model.obj;
 #X obj 282 399 pix_texture;
 #X obj 282 257 separator;
-#N canvas 361 399 737 537 coord&val 0;
+#N canvas 359 415 737 537 coord&val 0;
 #X obj 229 286 f;
 #X obj 254 286 + 1;
 #X msg 244 266 0;
@@ -458,7 +461,6 @@
 #X connect 55 0 44 1;
 #X connect 56 0 41 1;
 #X connect 56 1 41 2;
-#X connect 57 0 53 0;
 #X connect 57 1 54 0;
 #X connect 58 0 60 0;
 #X connect 58 0 59 0;
@@ -491,7 +493,6 @@
 #X connect 80 0 72 1;
 #X connect 81 0 68 1;
 #X connect 82 0 61 0;
-#X connect 84 0 44 0;
 #X connect 85 0 45 0;
 #X connect 85 0 66 1;
 #X connect 86 0 85 0;
