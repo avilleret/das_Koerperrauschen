@@ -1,4 +1,8 @@
-#N canvas 523 249 1001 619 10;
+#N canvas 521 265 1001 619 10;
+#X declare -path ../pd-externals/nusmuk-audio;
+#X declare -path ../pd-externals/nusmuk-audio;
+#X declare -path ../pd-externals/nusmuk-audio;
+#X declare -path ../pd-externals/nusmuk-audio;
 #X declare -path ../pd-externals/nusmuk-audio;
 #X obj 489 368 vsl 15 128 0 127 0 1 LFO_freq empty empty 0 -9 0 10
 -262144 -1 -1 5100 1;
@@ -7,19 +11,19 @@
 #X obj 843 375 vsl 15 128 0 127 0 1 disto empty empty 0 -9 0 10 -262144
 -1 -1 10600 1;
 #X obj 210 86 vsl 15 128 0 127 0 1 VCO_freq VCO_freq_in empty 0 -9
-0 10 -262144 -1 -1 220 1;
+0 10 -262144 -1 -1 353 1;
 #X obj 329 86 vsl 15 128 0 127 0 1 VCO_mod empty empty 0 -9 0 10 -262144
 -1 -1 4900 1;
 #X obj 523 84 vsl 15 128 0 127 0 1 VCF_freq VCF_freq_in empty 0 -9
-0 10 -262144 -1 -1 318 1;
+0 10 -262144 -1 -1 6030 1;
 #X obj 578 86 vsl 15 128 0 127 0 1 VCF_q VCF_q_in empty 0 -9 0 10 -262144
--1 -1 9690 1;
+-1 -1 11526 1;
 #X text 486 505 LFO freq;
 #X text 532 528 LFO shape;
 #X text 328 219 Mod LFO;
 #X text 522 222 VCF freq;
 #X obj 628 84 vsl 15 128 0 127 0 1 VCF_mod VCF_mod_in empty 0 -9 0
-10 -262144 -1 -1 6201 1;
+10 -262144 -1 -1 7376 1;
 #X text 579 242 Q;
 #X obj 603 366 vsl 15 128 0 127 0 1 LFO_symetry set_LFO_symetry empty
 0 -9 0 10 -262144 -1 -1 6350 1;
@@ -115,11 +119,11 @@
 10 -262144 -1 -1 7800 1;
 #X text 688 224 Mod ADSR;
 #X obj 843 88 vsl 15 128 0 127 0 1 VCA VCA_in empty 0 -9 0 10 -262144
--1 -1 3301 1;
+-1 -1 1885 1;
 #X text 841 57 VCA;
 #X text 845 227 Amplitude;
 #X text 202 351 ADSR;
-#X obj 43 371 tgl 50 0 on_off empty empty 17 7 0 10 -4034 -1 -1 0 1
+#X obj 43 371 tgl 50 0 on_off empty empty 17 7 0 10 -4034 -1 -1 1 1
 ;
 #X text 41 428 note on / off;
 #X obj 206 376 vsl 15 128 0 127 0 1 ADSR_A empty empty 0 -9 0 10 -262144
@@ -143,14 +147,14 @@
 #X obj 335 90 analog_synth 4;
 #X restore 41 56 pd dsp;
 #X obj 43 249 loadbang;
-#N canvas 40 197 1015 549 mapping 0;
+#N canvas 38 213 1015 549 mapping 1;
 #X obj 434 109 metro 10;
 #X obj 434 42 loadbang;
 #X obj 434 87 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 434 64 1;
 #X obj 597 181 tab_sum fsr;
-#X obj 823 275 s VCA_in;
+#X obj 823 315 s VCA_in;
 #X obj 337 202 tab_min_max fsr;
 #X obj 424 281 s VCO_freq_in;
 #X obj 424 249 mapping2float 0 127;
@@ -172,12 +176,13 @@
 #X obj 211 459 s VCF_freq_in;
 #X obj 141 175 tab_min_max cs;
 #X obj 72 210 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 242 1;
+-1 -1 11943 1;
 #X obj 364 226 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 225 1;
+-1 -1 353 1;
 #X obj 602 214 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 211 435 mapping2float 2 64;
+#X obj 823 277 speedlimiter 3;
 #X connect 0 0 14 0;
 #X connect 1 0 3 0;
 #X connect 2 0 0 0;
@@ -190,7 +195,7 @@
 #X connect 6 2 16 1;
 #X connect 6 2 27 0;
 #X connect 8 0 7 0;
-#X connect 9 0 5 0;
+#X connect 9 0 30 0;
 #X connect 11 0 10 0;
 #X connect 13 0 12 0;
 #X connect 14 0 25 0;
@@ -212,6 +217,7 @@
 #X connect 25 2 23 0;
 #X connect 25 2 26 0;
 #X connect 29 0 24 0;
+#X connect 30 0 5 0;
 #X restore 41 81 pd mapping;
 #X obj 32 14 declare -path ../pd-externals/nusmuk-audio;
 #X connect 15 0 27 0;
