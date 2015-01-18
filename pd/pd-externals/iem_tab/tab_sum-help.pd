@@ -1,5 +1,5 @@
-#N canvas 116 92 798 425 10;
-#N canvas 0 22 450 300 (subpatch) 0;
+#N canvas 114 108 798 425 10;
+#N canvas 0 50 450 300 (subpatch) 0;
 #X array src 100 float 1;
 #A 0 -0.442858 -0.414287 -0.385715 -0.342858 -0.314287 -0.257144 -0.128572
 -0.0428573 0.128572 0.228572 0.285715 0.328572 0.400001 0.414287 0.457144
@@ -25,10 +25,10 @@
 -1;
 #X msg 93 213 src src;
 #X obj 61 78 tab_sum src;
-#X floatatom 122 104 5 0 0 0 - - -;
+#X floatatom 122 104 5 0 0 0 - - -, f 5;
 #X obj 59 244 tab_sum src;
 #X msg 59 188 50 20;
-#X floatatom 120 305 5 0 0 0 - - -;
+#X floatatom 120 305 5 0 0 0 - - -, f 5;
 #X text 75 364 IEM KUG;
 #X text 54 352 musil;
 #X text 89 352 @;
