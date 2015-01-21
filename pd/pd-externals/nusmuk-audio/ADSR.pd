@@ -1,4 +1,4 @@
-#N canvas 94 563 851 413 10;
+#N canvas 92 568 851 413 10;
 #X obj 86 222 f;
 #X obj 86 96 metro 5;
 #X obj 86 77 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1

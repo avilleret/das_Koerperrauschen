@@ -1,4 +1,4 @@
-#N canvas 653 314 1001 619 10;
+#N canvas 651 319 1001 619 10;
 #X declare -path ../pd-externals/nusmuk-audio;
 #X declare -path ../pd-externals/nusmuk-audio;
 #X declare -path ../pd-externals/nusmuk-audio;
@@ -11,19 +11,19 @@
 #X obj 843 375 vsl 15 128 0 127 0 1 disto empty empty 0 -9 0 10 -262144
 -1 -1 10600 1;
 #X obj 210 86 vsl 15 128 0 127 0 1 VCO_freq VCO_freq_in empty 0 -9
-0 10 -262144 -1 -1 609 1;
+0 10 -262144 -1 -1 1445 1;
 #X obj 329 86 vsl 15 128 0 127 0 1 VCO_mod empty empty 0 -9 0 10 -262144
 -1 -1 4900 1;
 #X obj 523 84 vsl 15 128 0 127 0 1 VCF_freq VCF_freq_in empty 0 -9
-0 10 -262144 -1 -1 2318 1;
+0 10 -262144 -1 -1 5727 1;
 #X obj 578 86 vsl 15 128 0 127 0 1 VCF_q VCF_q_in empty 0 -9 0 10 -262144
--1 -1 12659 1;
+-1 -1 9149 1;
 #X text 486 505 LFO freq;
 #X text 532 528 LFO shape;
 #X text 328 219 Mod LFO;
 #X text 522 222 VCF freq;
 #X obj 628 84 vsl 15 128 0 127 0 1 VCF_mod VCF_mod_in empty 0 -9 0
-10 -262144 -1 -1 8101 1;
+10 -262144 -1 -1 5855 1;
 #X text 579 242 Q;
 #X obj 603 366 vsl 15 128 0 127 0 1 LFO_symetry set_LFO_symetry empty
 0 -9 0 10 -262144 -1 -1 6350 1;
@@ -119,7 +119,7 @@
 10 -262144 -1 -1 7800 1;
 #X text 688 224 Mod ADSR;
 #X obj 843 88 vsl 15 128 0 127 0 1 VCA VCA_in empty 0 -9 0 10 -262144
--1 -1 1840 1;
+-1 -1 2425 1;
 #X text 841 57 VCA;
 #X text 845 227 Amplitude;
 #X text 202 351 ADSR;
@@ -147,7 +147,7 @@
 #X obj 134 90 analog_synth 2;
 #X restore 41 56 pd dsp;
 #X obj 43 249 loadbang;
-#N canvas 36 218 1015 549 mapping 1;
+#N canvas 34 223 1015 549 mapping 1;
 #X obj 434 109 metro 10;
 #X obj 434 42 loadbang;
 #X obj 434 87 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
@@ -175,14 +175,14 @@
 #X obj 211 459 s VCF_freq_in;
 #X obj 141 175 tab_min_max cs;
 #X obj 72 210 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4338 1;
+-1 -1 11322 1;
 #X obj 364 226 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 609 1;
+-1 -1 1445 1;
 #X obj 602 214 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 1081 1;
 #X obj 211 435 mapping2float 2 64;
 #X obj 823 277 speedlimiter 3;
-#X obj 823 243 mapping2float 30 70;
+#X obj 823 243 mapping2float 20 70;
 #X connect 0 0 13 0;
 #X connect 1 0 3 0;
 #X connect 2 0 0 0;
@@ -190,6 +190,7 @@
 #X connect 4 1 10 0;
 #X connect 4 1 12 0;
 #X connect 4 1 27 0;
+#X connect 4 1 30 0;
 #X connect 6 2 8 0;
 #X connect 6 2 15 1;
 #X connect 6 2 26 0;

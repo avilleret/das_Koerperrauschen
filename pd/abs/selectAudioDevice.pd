@@ -1,4 +1,4 @@
-#N canvas 596 128 635 819 10;
+#N canvas 594 133 635 819 10;
 #X obj 67 222 audiosettings;
 #X text 260 104 audiosettings - query and manipulate audio-settings
 ;
@@ -30,7 +30,7 @@
 #X obj 377 441 sel \$1;
 #X obj 80 94 inlet;
 #X obj 473 487 outlet;
-#X msg 312 669 driver ALSA \, params @output \$1 8 @input -1 2;
+#X msg 312 669 driver ALSA \, params @output \$1 8 @input -1 0;
 #X connect 0 0 4 0;
 #X connect 2 0 15 0;
 #X connect 4 0 5 0;
